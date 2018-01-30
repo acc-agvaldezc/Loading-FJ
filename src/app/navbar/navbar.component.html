@@ -1,0 +1,50 @@
+<header>
+  <nav class="navbar d-flex navbar-orange">
+    <a class="navbar-brand mr-auto" href="#">{{navbarBrandTitle}}</a>
+
+      <ul class="nav navbar-nav pr-5">
+        <li class='nav-item text-center pr-5 pl-5' *ngIf='!loggedIn && !user'>
+          <a href='#' class='nav-link' [ngbPopover]='loginFormPopover' popoverTitle='Login' placement='bottom'>Login</a>
+          <ng-template #loginFormPopover id='loginFormPopoverTemplate'>
+            <div class='row'>
+              <form [formGroup]='loginForm' class='col-md-12'>
+                <div class='form-group'>
+                  <input class='form-control' placeholder='Username' type='text' formControlName='username'>
+                </div>
+                <div class='form-group'>
+                  <input class='form-control' placeholder='Password' type='password' formControlName='password'>
+                </div>
+                <div class='form-group'>
+                  <button class='form-control' class='btn btn-primary btn-block' type='submit'>Login</button>
+                </div>
+                <div class='row'>
+                  <div class='col-md-12'>
+                    <p class='text-center'><strong>Or</strong></p>
+                    <hr>
+                  </div>
+                </div>
+                <div class='row'>
+                  <div class='col-md-4'>
+                    <a href='#'>
+                      <img src='../../assets/images/facebook-50.png'>
+                    </a>
+                  </div>
+                  <div class='col-md-4'>
+                    <a  href='#'>
+                        <img src='../../assets/images/google-50.png'>
+                    </a>
+                  </div>
+                  <div class='col-md-4'>
+                    <a  href='#'>
+                        <img src='../../assets/images/twitter-50.png'>
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </ng-template>
+        </li>
+        <li *ngIf='loggedIn && user'>Hi, {{user.name}}</li>
+      </ul>
+  </nav>
+</header>

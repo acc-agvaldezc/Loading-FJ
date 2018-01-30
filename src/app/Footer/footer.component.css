@@ -1,0 +1,21 @@
+.footer {
+    text-align: center;
+    vertical-align: text-top;
+}
+
+.footer-msg {
+    font-style: italic;
+    color: #C5C5C5;
+}
+
+.footer-figure {
+    vertical-align: text-top;
+}
+
+.footer-img1 {
+    margin-left: 0px;
+}
+
+.footer-img2 {
+    margin-left: 30px;
+}

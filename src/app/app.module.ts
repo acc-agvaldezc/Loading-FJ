@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { AppComponent } from './app.component';
-
+import { HttpClientModule } from '@angular/common/http'
+import { YelpService } from './services/yelp.service';
 
 @NgModule({
   declarations: [
@@ -12,9 +12,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [YelpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

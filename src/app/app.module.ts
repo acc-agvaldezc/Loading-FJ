@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http'
+import { YelpService } from './services/yelp.service';
 
 import { BannerComponent } from './banner/banner.component';
 import { FooterComponent } from './footer/footer.component';
@@ -19,9 +21,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
+    HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [YelpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

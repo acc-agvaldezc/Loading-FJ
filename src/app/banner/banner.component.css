@@ -6,9 +6,27 @@
     background-color: #ff503e;
     border-radius:0;
 }
+.toolTip{
+    height: 30px;
+    background-color:rgba(0, 0, 0, 0.363);
+    color:white;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    top: -30px;
+    margin-bottom: -30px;
+    cursor: pointer; 
+    border-radius:0;
+}
 .BannerHeightB {
-    height: 200px;
+    height: 250px;
 }
 .BannerHeightA {
-    height: 100px;
+    height: 150px;
+}
+.bannerHeightC{
+    height: 150px;
+}
+.textBlack{
+    color: black !important;
 }

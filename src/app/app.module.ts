@@ -5,23 +5,28 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 
 import { BannerComponent } from './banner/banner.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './Footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { JourneysComponent } from './journeys/journeys.component';
+import { JourneysService } from './services/journeys.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     BannerComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    JourneysComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [JourneysService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

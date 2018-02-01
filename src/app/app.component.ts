@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { YelpService } from './services/yelp.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { IYelpBusinesses, IYelpResponse, IYelpBusinessesRegion } from './interfaces/yelp';
+import { IYelpBusiness, IYelpResponse, IYelpBusinessRegion } from './interfaces/yelp';
 import { IYelpReview } from './interfaces/yelp';
 
 @Component({
@@ -11,8 +11,8 @@ import { IYelpReview } from './interfaces/yelp';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  businesses: IYelpBusinesses[];
-  businessesRegion: IYelpBusinessesRegion[];
+  businesses: IYelpBusiness[];
+  businessesRegion: IYelpBusinessRegion[];
   reviews: IYelpReview[];
 
   constructor(private yelpService: YelpService){}

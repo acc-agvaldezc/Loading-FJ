@@ -2,12 +2,12 @@ export interface IYelpResponse{
     //Total search?
     total?: number;
     //Businesses Object
-    businesses?: IYelpBusinesses[];
+    businesses?: IYelpBusiness[];
     //Region Object
-    region?: IYelpBusinessesRegion[];
+    region?: IYelpBusinessRegion[];
 }
 
-export interface IYelpBusinesses{
+export interface IYelpBusiness{
     //businesses rating
     rating?: number; 
     //Main foreing exchange
@@ -34,7 +34,7 @@ export interface IYelpBusinesses{
     transactions?: any[]; //Simple array of transactions
 }
 
-export interface IYelpBusinessesRegion{
+export interface IYelpBusinessRegion{
     //Center Object has latitude & longitude properties
     center: any[]
 }
@@ -76,7 +76,7 @@ export interface IYelpBusinessDetailResponse{
 }
 
 export interface IYelpReview{
-    //Return an Object array with id, ratinng, user array, text, time_created and url properties
+    //Return an Object array with id, rating, user array, text, time_created and url properties
     reviews?: any[];
     //Return total comments
     total?: number;

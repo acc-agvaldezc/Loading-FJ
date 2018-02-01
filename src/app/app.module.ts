@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JourneysComponent } from './journeys/journeys.component';
 import { JourneysService } from './services/journeys.service';
 import { AuthService } from './services/auth.service';
+import { DescripcionComponent } from './descripcion/descripcion.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { AuthService } from './services/auth.service';
     NavbarComponent,
     BannerComponent,
     FooterComponent,
-    JourneysComponent
+    JourneysComponent,
+    NavbarComponent,
+    DescripcionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService, TOKEN_NAME } from '../services/auth.service';
+import { IUser } from '../interfaces/user';
+import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown';
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +13,18 @@ export class NavbarComponent implements OnInit {
 
   navbarBrandTitle: string = 'FoodieJourney';
   loggedIn: boolean = false;
-  user: any;
+  user: IUser;
 
   loginForm: FormGroup;
+  
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService) {
+    this.createLoginForm();
 
-  constructor(private _formBuilder: FormBuilder) {
-    if (!this.user) {
-      this.createLoginForm();
+    if (this._authService.isLoggedIn()) {
+      this.user = this._authService.getUser();
+      this.loggedIn = true;
+    } else {
+      this.user = null;
     }
   }
 
@@ -25,8 +33,24 @@ export class NavbarComponent implements OnInit {
 
   createLoginForm(): void {
     this.loginForm = this._formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+      username: [null, Validators.required],
+      password: [null, Validators.required]
     })
+  }
+
+  login(): void {
+    let formValues = this.loginForm.value;
+
+    let username = formValues.username;
+    let password = formValues.password;
+
+    this.loggedIn = this._authService.login(username, password);
+    this.user = this._authService.getUser();
+  }
+
+  logout(): void {
+    this._authService.logout();
+    this.loggedIn = false;
+    this.user = null;
   }
 }

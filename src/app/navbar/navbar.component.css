@@ -7,3 +7,9 @@
   color: #ffffff;
   border-color: #ffffff;
 }
+
+.app-icon {
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+}

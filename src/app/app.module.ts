@@ -7,17 +7,20 @@ import { HttpClientModule } from '@angular/common/http'
 import { YelpService } from './services/yelp.service';
 
 import { BannerComponent } from './banner/banner.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './Footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { JourneysComponent } from './journeys/journeys.component';
+import { JourneysService } from './services/journeys.service';
 import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     BannerComponent,
     FooterComponent,
-    NavbarComponent,
+    JourneysComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [YelpService, AuthService],
+  providers: [YelpService, AuthService, JourneysService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

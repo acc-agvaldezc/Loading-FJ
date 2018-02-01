@@ -9,9 +9,8 @@ import { IJourney } from '../interfaces/journeys';
 @Injectable()
 export class JourneysService {
 
-  //private _journeyUrl = 'https://api.myjson.com/bins/7oewt'; Prueba con 2 Paths
-  //private _journeyUrl = 'https://api.myjson.com/bins/11dqa5'; Prueba sin íconos
-  private _journeyUrl = 'https://api.myjson.com/bins/qbqcl';
+  //private _journeyUrl = 'https://api.myjson.com/bins/i6ra5'; // Prueba con 2 elementos
+  private _journeyUrl = 'https://api.myjson.com/bins/qbqcl'; // Prueba con 5 elementos
 
   constructor(private _client: HttpClient) { }
 

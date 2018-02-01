@@ -1,6 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-.bg-orange {
-  background-color: #ff503e;
+/* Classes used by Journeys Component to change the color & visualization of the completion percentage */
+.bg-danger {
+  background-color: #FF503E !important;
+}
+
+.progress {
+  background-color: #CB3729 !important;
+}
+
+.progress span {
+  position: relative;
+  text-align: center;
+  font-size: 13px;
+  top: 30px;
 }

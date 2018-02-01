@@ -4,7 +4,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from "rxjs/Observable";
 import { HttpClient } from '@angular/common/http'
 import { HttpParams, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { IYelpResponse } from "./yelp";
+import { IYelpResponse, IYelpBusinessDetailResponse, IYelpReview } from "../interfaces/yelp";
 
 
 
@@ -37,9 +37,17 @@ export class YelpService{
         return this._http.get(this._yelpUrl,{headers: this.header, params: params}).catch(this.handleError)
     }
 
+    //get Business detail
+    getBusinessDetail(idBusiness: string): Observable<IYelpBusinessDetailResponse> {
+        return this._http.get(this._detailUrl + idBusiness, {headers: this.header}).catch(this.handleError);
+    }
+    //get Business reviews
+    getBusinessDetailReviews(idBusiness:string): Observable<IYelpReview>{
+        return this._http.get(this._detailUrl + idBusiness + "/reviews", {headers: this.header}).catch(this.handleError)
+    }
+    
     //HandleError method 
     private handleError(err: HttpErrorResponse){
-        console.log(err.message);
         return Observable.throw(err.message);
     }
 }

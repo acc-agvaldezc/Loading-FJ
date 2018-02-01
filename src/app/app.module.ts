@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http'
 import { YelpService } from './services/yelp.service';
 
 import { BannerComponent } from './banner/banner.component';
@@ -25,8 +25,9 @@ import { AuthService } from './services/auth.service';
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    HttpClientModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   providers: [YelpService, AuthService, JourneysService],
   bootstrap: [AppComponent]

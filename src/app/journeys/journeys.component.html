@@ -1,29 +1,22 @@
 <div class="container-fluid">
-  <header class="header">
+  <header class="header header-style">
     Welcome! Choose a track to get started.
   </header>
-
   <br>
-  <section>        
+  <section>
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-1"></div>
-        
-        <div class="col-md-2 header" *ngFor = 'let journey of journey'>
-          <!--<div class="progress fondo">
-            <div class="progress-bar bg-danger progressBar" role="progressbar" 
-            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-              <img [src] = 'journey.img' >{{ journey.name }}
-            </div>
-          </div>-->
-          <header class="header-path"><img class="food-icon" [src] = 'journey.img'>{{ journey.name }} </header>
+
+        <div class="col-md-2 header" *ngFor='let journey of journey'>
+          <ngb-progressbar [value]="value"></ngb-progressbar>
+          <div class="info-path"><img class="food-icon" [src]='journey.img'>{{ journey.name }} </div>
           <section class="description"> {{ journey.description }} </section>
           <footer class="duration">Duration: {{ journey.duration }} </footer>
         </div>
-
+        
         <div class="col-md-1"></div>
       </div>
     </div>
-
   </section>
 </div>

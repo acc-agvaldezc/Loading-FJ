@@ -2,22 +2,18 @@
     text-align: center;
 }
 
-.header-path {
-    background-color: #FF503E;
-    color: white;
-    height: 100px;
-    padding-top: 35px;
+.header-style {
+    margin-top: 15px;
+    font-size: 25px;
 }
 
-/*.progressBar {
-    background-color: #FF503E;
+.info-path {
+    position: relative;
+    top: -75px;
+    margin-bottom: -18px;
     color: white;
+    font-size: 18px;
 }
-
-.fondo {
-    background-color: #C9382F !important;
-    height: 150px !important;
-} */
 
 .food-icon {
     height: 25px;
@@ -26,13 +22,13 @@
 }
 
 .description {
-    margin-top: 5px;
     text-align: left;
     font-size: 12px;
 }
 
 .duration {
     margin-top: 5px;
+    margin-bottom: 20px;
     text-align: left;
     font-weight: bold;
     font-size: 11px;

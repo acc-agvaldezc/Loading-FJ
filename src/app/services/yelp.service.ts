@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { HttpClient } from '@angular/common/http'
 import { HttpParams, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { IYelpResponse, IYelpBusinessDetailResponse, IYelpReview } from "../interfaces/yelp";
+import { IYelpResponse } from "./yelp";
 
 
 
@@ -48,6 +49,12 @@ export class YelpService{
     
     //HandleError method 
     private handleError(err: HttpErrorResponse){
+        return Observable.throw(err.message);
+    }
+  
+    //HandleError method 
+    private handleError(err: HttpErrorResponse){
+        console.log(err.message);
         return Observable.throw(err.message);
     }
 }

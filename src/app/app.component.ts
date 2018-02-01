@@ -15,16 +15,16 @@ export class AppComponent implements OnInit {
   businessesRegion: IYelpBusinessRegion[];
   reviews: IYelpReview[];
 
-  constructor(private yelpService: YelpService){}
+  constructor(private yelpService: YelpService) { }
 
-  ngOnInit(): void{
-    this.yelpService.getBusinessDetail("yama-to-no-title").subscribe(data =>{
+  ngOnInit(): void {
+    this.yelpService.getBusinessDetail("yama-to-no-title").subscribe(data => {
       console.log(data.review_count);
     });
-    this.yelpService.getBusinessDetailReviews('yama-to-no-title').subscribe(data =>{
+    this.yelpService.getBusinessDetailReviews('yama-to-no-title').subscribe(data => {
       console.log(data.reviews)
     })
-    this.yelpService.searchRestaurants('Japanese', 25.669996, -100.3800037).subscribe(data =>{
+    this.yelpService.searchRestaurants('Japanese', 25.669996, -100.3800037).subscribe(data => {
       this.businesses = data.businesses
       this.businessesRegion = data.region
       console.log(this.businesses, this.businessesRegion)

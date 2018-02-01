@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { Observable } from "rxjs/Observable";
 import { HttpClient } from '@angular/common/http'
 import { HttpParams, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { IYelpResponse, IYelpBusinessDetailResponse, IYelpReview } from "../interfaces/yelp";
 
-
-
 @Injectable()
-
 export class YelpService{
 
     //Url Declarations
@@ -19,8 +17,10 @@ export class YelpService{
     private _detailUrl = "https://api.yelp.com/v3/businesses/";
     
     //Specific API permissions
-    private header = new HttpHeaders().set('Authorization','Bearer -5rE74xo-N9XAff6kCZpWGp3rEkSgqpPqMi0TaP3qGkqNvzlWGz0jAjnq5Oal6i6lDaygXDnZyYzh3KYegualGVa4faFnKVzR64SAQTiOhuiOLz9XbCYuZPRmK5wWnYx').set('Access-Control-Allow-Origin', '*');
-
+    private header = new HttpHeaders()
+            .set('Authorization','Bearer -5rE74xo-N9XAff6kCZpWGp3rEkSgqpPqMi0TaP3qGkqNvzlWGz0jAjnq5Oal6i6lDaygXDnZyYzh3KYegualGVa4faFnKVzR64SAQTiOhuiOLz9XbCYuZPRmK5wWnYx')
+            .set('Access-Control-Allow-Origin', '*');
+            
     //Constructor
     constructor(private _http: HttpClient){}
 

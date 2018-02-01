@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.navbar-orange {
+  background-color: #ff503e;
+}
+
+.navbar-orange .navbar-toggler,
+.navbar-orange a {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+

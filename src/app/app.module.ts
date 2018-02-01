@@ -6,14 +6,23 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { YelpService } from './services/yelp.service';
 
+import { BannerComponent } from './banner/banner.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BannerComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [YelpService],
   bootstrap: [AppComponent]

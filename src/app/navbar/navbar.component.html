@@ -1,10 +1,12 @@
 <header>
   <nav class="navbar d-flex navbar-orange">
-    <a class="navbar-brand mr-auto" href="#">{{navbarBrandTitle}}<img class="app-icon" src= 'assets/Icons/icon-white.png'></a>
+    <a class="navbar-brand mr-auto" href="#">{{navbarBrandTitle}}
+      <img class="app-icon" src='assets/Icons/icon-white.png'>
+    </a>
 
     <ul class="nav navbar-nav pr-5">
       <li class='nav-item text-center pr-5 pl-5' *ngIf='!loggedIn'>
-        <a href='#' class='nav-link' [ngbPopover]='loginFormPopover' popoverTitle='Login' placement='bottom'>Login</a>
+        <a href='#' class='nav-link' [ngbPopover]='loginFormPopover' popoverTitle='Login' placement='bottom'>Login <span class="oi oi-caret-bottom"></span></a>
         <!--Login form popover-->
         <ng-template #loginFormPopover id='loginFormPopoverTemplate'>
           <div class='row'>
@@ -27,17 +29,17 @@
                 </div>
               </div>
               <div class='row'>
-                <div class='col-md-4'>
+                <div class='col'>
                   <a href='#'>
                     <img src='../../assets/images/facebook-50.png'>
                   </a>
                 </div>
-                <div class='col-md-4'>
+                <div class='col'>
                   <a href='#'>
                     <img src='../../assets/images/google-50.png'>
                   </a>
                 </div>
-                <div class='col-md-4'>
+                <div class='col'>
                   <a href='#'>
                     <img src='../../assets/images/twitter-50.png'>
                   </a>
@@ -49,17 +51,22 @@
         <!--Login form popover-->
       </li>
       <li *ngIf='loggedIn'>
-        <a href='#' class='nav-link' [ngbPopover]='userMenu' popoverTitle='' placement='bottom'>Hi, {{user.firstName}}</a>
+        <a href='#' class='nav-link' [ngbPopover]='userMenu' popoverTitle='' placement='bottom'>Hi, {{user.firstName}} <span class="oi oi-caret-bottom"></span></a>
         <ng-template #userMenu>
-          <div class='row'>
-            <div class="col-md-12">
-              <a href='#'>My Journey</a>
-            </div>
+          <div class='row' class='userMenuSection'>
+            <a href='#'>
+              <div class="col-md-12 text-center">
+                <strong>My Journey</strong>
+              </div>
+            </a>
           </div>
-          <div class='row'>
-            <div class="col-md-12">
-              <a href='#' (click)='logout()'>Logout</a>
-            </div>
+          <hr>
+          <div class='row' class='userMenuSection'>
+            <a href='#' (click)='logout()'>
+              <div class="col-md-12 text-center">
+                <strong>Logout</strong>
+              </div>
+            </a>
           </div>
         </ng-template>
       </li>

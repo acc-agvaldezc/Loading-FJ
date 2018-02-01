@@ -31,5 +31,4 @@ export class JourneysComponent implements OnInit {
           //console.log("Journeys: " + this.journey)
     });
   }
-
 }

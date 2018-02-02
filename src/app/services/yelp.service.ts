@@ -6,7 +6,6 @@ import { Observable } from "rxjs/Observable";
 import { HttpClient } from '@angular/common/http'
 import { HttpParams, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { IYelpResponse, IYelpBusinessDetailResponse, IYelpReview } from "../interfaces/yelp";
-import { text } from "@angular/core/src/render3/instructions";
 
 @Injectable()
 export class YelpService {
@@ -25,12 +24,8 @@ export class YelpService {
 
     private _proxyUrl: string = 'http://cors-anywhere.herokuapp.com/'
 
-    //Specific API permissions
-
     //Constructor
-    constructor(private _http: HttpClient) {
-        console.log(this.header);
-    }
+    constructor(private _http: HttpClient) {}
 
     //Search restaurants by latitud
     searchRestaurants(term: string, latitude: number, longitude: number, limit?: number): Observable<IYelpResponse> {
@@ -46,22 +41,18 @@ export class YelpService {
         }
 
         //return restaurants results
-<<<<<<< Updated upstream
-        return this._http.get(`${this._yelpSearchApi}`, { headers: this.header, params: params })
-            .do(resp => console.log(resp))
-=======
         return this._http.get(`${this._proxyUrl}${this._yelpSearchApi}`, { headers: this.header, params: params })
->>>>>>> Stashed changes
+            .do(resp => console.log(resp))
             .catch(this.handleError);
     }
 
     //get Business detail
     getBusinessDetail(idBusiness: string): Observable<IYelpBusinessDetailResponse> {
-        return this._http.get(`${this._yelpDetailApi}${idBusiness}`, { headers: this.header }).catch(this.handleError);
+        return this._http.get(`${this._proxyUrl}${this._yelpDetailApi}${idBusiness}`, { headers: this.header }).catch(this.handleError);
     }
     //get Business reviews
     getBusinessDetailReviews(idBusiness: string): Observable<IYelpReview> {
-        return this._http.get(`${this._yelpDetailApi}${idBusiness}/reviews`, { headers: this.header }).catch(this.handleError);
+        return this._http.get(`${this._proxyUrl}${this._yelpDetailApi}${idBusiness}/reviews`, { headers: this.header }).catch(this.handleError);
     }
 
     //HandleError method 

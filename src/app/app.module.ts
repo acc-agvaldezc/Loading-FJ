@@ -5,38 +5,39 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { YelpService } from './services/yelp.service';
-
-import { BannerComponent } from './banner/banner.component';
-import { FooterComponent } from './Footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { JourneysComponent } from './journeys/journeys.component';
-import { JourneysService } from './services/journeys.service';
 import { AuthService } from './services/auth.service';
-import { GoogleMapsComponent } from './google-maps/google-maps.component';
 
-import { AgmCoreModule } from '@agm/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { baseRoutes } from './router/routes';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { WelcomeModule } from './welcome/welcome.module';
+import { FooterComponent } from './shared/footer/footer.component';
+import { GoogleMapsComponent } from './google-maps/google-maps.component';
+import { JourneysComponent } from './journeys/journeys.component';
+import {AgmCoreModule} from '@agm/core'
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    BannerComponent,
     FooterComponent,
     JourneysComponent,
-    GoogleMapsComponent
+    GoogleMapsComponent,
+    NavbarComponent
     
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot(),
+    WelcomeModule,
     HttpClientModule,
+    RouterModule.forRoot(baseRoutes),
+    NgbModule.forRoot(),
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAio5BHzYvZbgt7EVXXIyQdM5sL9fb5atU'
     }),
   ],
-  providers: [YelpService, AuthService, JourneysService],
+  providers: [YelpService, AuthService],
   bootstrap: [AppComponent]
 })
 

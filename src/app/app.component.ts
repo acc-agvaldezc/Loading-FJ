@@ -32,10 +32,10 @@ export class AppComponent implements OnInit {
       this.maplng = data.coordinates["longitude"];
       this.mapName = data.name;
     });
-    this.yelpService.getBusinessDetailReviews('yama-to-no-title').subscribe(data =>{
+    this.yelpService.getBusinessDetailReviews('yama-to-no-title').subscribe(data => {
       console.log(data.reviews)
     })
-    this.yelpService.searchRestaurants('American', 37.786882, -122.399972).subscribe(data =>{
+    this.yelpService.searchRestaurants('Japanese', 25.669996, -100.3800037).subscribe(data => {
       this.businesses = data.businesses
       this.businessesRegion = data.region
     });

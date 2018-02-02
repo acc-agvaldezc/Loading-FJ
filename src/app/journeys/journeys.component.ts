@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JourneysService } from '../services/journeys.service';
-import { IJourney } from '../interfaces/journeys';
+import { IJourney, IUserJourneys } from '../interfaces/journeys';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap/progressbar/progressbar-config';
 
 @Component({
@@ -12,21 +12,18 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap/progressbar/pro
 export class JourneysComponent implements OnInit {
   
   value: number = 30;
-  percentage;
-
+  userJourneys: IUserJourneys;
   journey: IJourney[];
+
   constructor(private _journeyService: JourneysService, private _config: NgbProgressbarConfig) { 
     _config.max = 100;
     _config.height = '125px';
     _config.type = 'danger';
 
-    this.value > 0 ? this.percentage = this.value/100 : this.percentage = '';
+    this.userJourneys = this._journeyService.getUserJourneys();
   }
 
   ngOnInit() {
-    this._journeyService.getJourneys().subscribe( data => { 
-          this.journey = data;
-          //console.log("Journeys: " + this.journey)
-    });
+    console.log(this.userJourneys);
   }
 }

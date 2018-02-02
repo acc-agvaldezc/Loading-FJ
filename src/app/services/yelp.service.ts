@@ -33,7 +33,7 @@ export class YelpService {
     }
 
     //Search restaurants by latitud
-    searchRestaurants(term: string, latitude: number, longitude: number): Observable<IYelpResponse> {
+    searchRestaurants(term: string, latitude: number, longitude: number, limit?: number): Observable<IYelpResponse> {
 
         //Parameters delcarations <''+ = Parse to String> 
         let params = new HttpParams();
@@ -41,9 +41,17 @@ export class YelpService {
         params = params.append('latitude', `${latitude}`);
         params = params.append('longitude', `${longitude}`);
 
+        if (limit) {
+            params = params.append('limit', `${limit}`);
+        }
+
         //return restaurants results
+<<<<<<< Updated upstream
         return this._http.get(`${this._yelpSearchApi}`, { headers: this.header, params: params })
             .do(resp => console.log(resp))
+=======
+        return this._http.get(`${this._proxyUrl}${this._yelpSearchApi}`, { headers: this.header, params: params })
+>>>>>>> Stashed changes
             .catch(this.handleError);
     }
 

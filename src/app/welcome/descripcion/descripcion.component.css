@@ -1,0 +1,22 @@
+
+.info-columns {
+    color: rgb(22, 21, 21);    
+}
+
+.info-columns img {
+    margin: auto;
+    display: block;
+}
+
+
+    
+.info-bg {
+    background: url('../../../assets/images/menuBanner.jpg');
+    background-size: cover;
+}
+
+
+/*
+div{ background: rgba(0, 0, 0, 0.7)
+} 
+*/

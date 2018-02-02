@@ -10,7 +10,10 @@
 
         <div class="col-md-2 header" *ngFor='let journey of journey'>
           <ngb-progressbar [value]="value"></ngb-progressbar>
-          <div class="info-path"><img class="food-icon" [src]='journey.img'>{{ journey.name }} </div>
+          <div class="label-div">
+            <div class="info-path"><img class="food-icon" [src]='journey.img'>{{ journey.name }} </div>
+            <span class="completion-path">{{ percentage | percent : '1.0' }}</span>
+          </div>
           <section class="description"> {{ journey.description }} </section>
           <footer class="duration">Duration: {{ journey.duration }} </footer>
         </div>

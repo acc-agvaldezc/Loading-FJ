@@ -1,8 +1,6 @@
 
 .info-columns {
-    color: rgb(22, 21, 21);
-    
-  /*  background: rgba(0, 0, 0, 0.096); */
+    color: rgb(22, 21, 21);    
 }
 
 .info-columns img {
@@ -13,9 +11,8 @@
 
     
 .info-bg {
-    background: url('../../assets/images/copia.jpg');
+    background: url('../../assets/images/menuBanner.jpg');
     background-size: cover;
-  /*  opacity: 0.8; */
 }
 
 

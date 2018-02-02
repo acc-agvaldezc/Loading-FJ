@@ -13,6 +13,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JourneysComponent } from './journeys/journeys.component';
 import { JourneysService } from './services/journeys.service';
 import { AuthService } from './services/auth.service';
+import { GoogleMapsComponent } from './google-maps/google-maps.component';
+
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,18 @@ import { AuthService } from './services/auth.service';
     NavbarComponent,
     BannerComponent,
     FooterComponent,
-    JourneysComponent
+    JourneysComponent,
+    GoogleMapsComponent
+    
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     HttpClientModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAio5BHzYvZbgt7EVXXIyQdM5sL9fb5atU'
+    }),
   ],
   providers: [YelpService, AuthService, JourneysService],
   bootstrap: [AppComponent]

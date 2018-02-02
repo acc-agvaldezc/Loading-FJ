@@ -18,11 +18,11 @@ export class YelpService {
     private _yelpApiKey: string = 'Bearer -5rE74xo-N9XAff6kCZpWGp3rEkSgqpPqMi0TaP3qGkqNvzlWGz0jAjnq5Oal6i6lDaygXDnZyYzh3KYegualGVa4faFnKVzR64SAQTiOhuiOLz9XbCYuZPRmK5wWnYx';
 
     private header: HttpHeaders = new HttpHeaders()
-        .append('Authorization', this._yelpApiKey)
-        .append('Access-Control-Allow-Origin', '*')
-        .append('Content-Type', 'text/xml');
+        .set('Authorization', this._yelpApiKey)
+        .set('Access-Control-Allow-Origin', '*')
+        .set('Content-Type', 'text/xml');
 
-    private _proxyUrl: string = 'http://cors-anywhere.herokuapp.com/'
+    private _proxyUrl: string = 'https://cors-anywhere.herokuapp.com/'
 
     //Constructor
     constructor(private _http: HttpClient) {}

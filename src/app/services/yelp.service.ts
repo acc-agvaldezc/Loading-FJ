@@ -42,18 +42,18 @@ export class YelpService {
         params = params.append('longitude', `${longitude}`);
 
         //return restaurants results
-        return this._http.get(`${this._proxyUrl}${this._yelpSearchApi}`, { headers: this.header, params: params })
+        return this._http.get(`${this._yelpSearchApi}`, { headers: this.header, params: params })
             .do(resp => console.log(resp))
             .catch(this.handleError);
     }
 
     //get Business detail
     getBusinessDetail(idBusiness: string): Observable<IYelpBusinessDetailResponse> {
-        return this._http.get(`${this._proxyUrl}${this._yelpDetailApi}/${idBusiness}`, { headers: this.header }).catch(this.handleError);
+        return this._http.get(`${this._yelpDetailApi}${idBusiness}`, { headers: this.header }).catch(this.handleError);
     }
     //get Business reviews
     getBusinessDetailReviews(idBusiness: string): Observable<IYelpReview> {
-        return this._http.get(`${this._proxyUrl}${this._yelpDetailApi}/${idBusiness}/reviews`, { headers: this.header }).catch(this.handleError);
+        return this._http.get(`${this._yelpDetailApi}${idBusiness}/reviews`, { headers: this.header }).catch(this.handleError);
     }
 
     //HandleError method 

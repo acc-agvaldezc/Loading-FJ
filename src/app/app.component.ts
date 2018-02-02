@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
   businessesRegion: IYelpBusinessRegion[];
   reviews: IYelpReview[];
 
-
   //GoogleMaps information  by property binding
   mapLat: number;
   maplng: number;
@@ -32,7 +31,6 @@ export class AppComponent implements OnInit {
       this.mapLat = data.coordinates["latitude"];
       this.maplng = data.coordinates["longitude"];
       this.mapName = data.name;
-
     });
     this.yelpService.getBusinessDetailReviews('yama-to-no-title').subscribe(data => {
       console.log(data.reviews)

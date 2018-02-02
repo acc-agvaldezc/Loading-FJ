@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService, TOKEN_NAME } from '../services/auth.service';
-import { IUser } from '../interfaces/user';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown';
+import { IUser } from '../../interfaces/user';
+import { AuthService, TOKEN_NAME } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',

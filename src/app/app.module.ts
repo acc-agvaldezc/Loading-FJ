@@ -5,15 +5,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { YelpService } from './services/yelp.service';
-
-import { FooterComponent } from './Footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { JourneysService } from './services/journeys.service';
 import { AuthService } from './services/auth.service';
+
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { baseRoutes } from './router/routes';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 import { WelcomeModule } from './welcome/welcome.module';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,7 @@ import { WelcomeModule } from './welcome/welcome.module';
     HttpClientModule,
     RouterModule.forRoot(baseRoutes)
   ],
-  providers: [YelpService, AuthService, JourneysService],
+  providers: [YelpService, AuthService],
   bootstrap: [AppComponent]
 })
 

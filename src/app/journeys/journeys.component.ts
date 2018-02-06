@@ -11,19 +11,20 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap/progressbar/pro
 
 export class JourneysComponent implements OnInit {
   
-  value: number = 30;
   userJourneys: IUserJourneys;
-  journey: IJourney[];
-
+  journeys: IJourney[];
+  
   constructor(private _journeyService: JourneysService, private _config: NgbProgressbarConfig) { 
     _config.max = 100;
     _config.height = '125px';
     _config.type = 'danger';
 
     this.userJourneys = this._journeyService.getUserJourneys();
+    this.journeys = this.userJourneys.journeys;
   }
 
   ngOnInit() {
     console.log(this.userJourneys);
+    console.log(this.journeys);
   }
 }

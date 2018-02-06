@@ -29,7 +29,7 @@ const baseItalianJourney: IJourney = {
 const baseMexicanJourney: IJourney = {
     id: 3,
     name: 'Mexican',
-    description: 'Known for its varied flavours and spices, the food of Mexico is a result of the Spanish conquistadores interaction with the Aztec culture',
+    description: 'Known for its varied flavours and spices, the food of Mexico is a result of the Spanish conquistadores interaction with the Aztec culture.',
     duration: '2 Weeks',
     imgUrl: '../assets/Icons/Mexican.png',
     currentTask: null,
@@ -44,7 +44,7 @@ const baseJapaneseJourney: IJourney = {
     name: 'Japanese',
     description: 'In 2014, 14 restaurants in Tokyo and Shonan maintain a Michelin three-stars rating, the ultimate international recognition in the culinary world.',
     duration: '3 Weeks',
-    imgUrl: '../assets/Icons/American.png',
+    imgUrl: '../assets/Icons/Japanese.png',
     currentTask: null,
     totalTasks: 10,
     completedTasks: 0,
@@ -68,15 +68,15 @@ const baseKoreanJourney: IJourney = {
 export interface IBaseJourneys {
     American: IJourney,
     Italian: IJourney,
+    Mexican: IJourney,
     Japanese: IJourney,
-    Korean: IJourney,
-    Mexican: IJourney
+    Korean: IJourney
 }
 
 export const newJourneys: IBaseJourneys = {
     'American': baseAmericanJourney,
-    'Mexican': baseMexicanJourney,
     'Italian': baseItalianJourney,
+    'Mexican': baseMexicanJourney,
     'Japanese': baseJapaneseJourney,
     'Korean': baseKoreanJourney
 }

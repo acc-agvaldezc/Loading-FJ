@@ -4,6 +4,8 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import 'rxjs/add/operator/map';
+
 import { IJourney, IUserJourneys } from '../interfaces/journeys';
 import { AuthService } from './auth.service';
 import { YelpService } from './yelp.service';
@@ -15,15 +17,15 @@ import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class JourneysService {
-
+  
   //private _journeyUrl = 'https://api.myjson.com/bins/i6ra5'; // Prueba con 2 elementos
-  private _journeyUrl = 'https://api.myjson.com/bins/qbqcl'; // Prueba con 5 elementos
+  //private _journeyUrl = 'https://api.myjson.com/bins/qbqcl'; // Prueba con 5 elementos
   private _userJourneys: IUserJourneys;
 
   constructor(private _client: HttpClient, private _authService: AuthService, private _yelpService: YelpService) { }
 
   getUserJourneys(): IUserJourneys {
-
+    
     //If userJourneys already loaded
     if (this._userJourneys) {
       console.log('User journeys loaded on cache.');
@@ -96,5 +98,18 @@ export class JourneysService {
       );
 
     return;
+  }
+
+  getJourney(id: number): IJourney {
+    let j: IUserJourneys;
+    let path: IJourney;
+    j = this.getUserJourneys();
+    j.journeys.map(data => {
+      if(data.id === id) {
+        path = data;
+      }
+    });
+    //console.log(path);
+    return path;
   }
 }

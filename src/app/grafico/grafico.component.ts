@@ -1,23 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-grafico',
   templateUrl: './grafico.component.html',
   styleUrls: ['./grafico.component.css']
 })
-export class GraficoComponent implements OnInit {
+export class GraficoComponent implements OnInit, OnChanges {
   @Input() journeyName: string;
   @Input() journeyDescription: string;
   @Input() journeyCompletePercent: number;
   @Input() journeyDuration: string;
+  @Input() journeyImage: string;
+  @Input() journeyCurrent: string;
 
-  constructor() {
-    console.log(this.journeyCompletePercent);
-  }
+  constructor() { }
 
-  ngOnInit() {
-    this.pieChartData = [this.journeyCompletePercent, (100 - this.journeyCompletePercent)];
-  }
+  ngOnInit() { this.pieChartData = [this.journeyCompletePercent, (100 - this.journeyCompletePercent)]; }
+  ngOnChanges() { this.pieChartData = [this.journeyCompletePercent, (100 - this.journeyCompletePercent)]; }
 
   // Pie
   public pieChartData:number[];
@@ -29,21 +28,8 @@ export class GraficoComponent implements OnInit {
     responsive: false,
     maintainAspectRatio: true
   };
- 
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
+  
+  followTask() {
+    alert('Already following!');
   }
- 
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
-
-  public numeros_random(){
-    this.pieChartData = [
-      Math.round(Math.random() * 100),
-      Math.round(Math.random() * 100)
-    ];
-  }
-
 }

@@ -1,0 +1,38 @@
+.routes {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.graph {
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
+.accordion {
+    background-color: #F2F2F2;
+}
+
+.order-button { 
+    background-color: white; 
+}
+
+.routeButton {
+    margin-left: 15px;
+    background-color: white;
+    border: 1px solid red;
+}
+
+.image-rest {
+    height: 200px;
+    width: 250px;
+}
+
+.active {
+    background-color: #FF503E;
+    color: white;
+}
+
+ngb-rating {
+    color: #EEC900;
+    font-size: 25px;
+}

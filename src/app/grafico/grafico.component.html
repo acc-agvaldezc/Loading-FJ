@@ -1,0 +1,26 @@
+<div class="row pie">
+  <div class=' col-md-4 m-0 p-0'>
+    <canvas baseChart [data]="pieChartData" [chartType]="pieChartType" [colors]="pieChartColor" (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)" [options]='pieChartOptions'>
+    </canvas>
+    <div class="iconPosition col-md-12">
+      <img class="foodIcon" src='assets/Icons/American.png'>
+    </div>
+  </div>
+
+  <div class='col-md-8'>
+    <div class='row'>
+      <div class='col-md-12 text'>
+        <h3>{{journeyName}}</h3>
+        <p>{{journeyDescription}}</p>
+      </div>
+      <div class='col-md-6'>
+        <button type="button" class="btnBco">{{journeyDuration}}</button>
+      </div>
+      <div class='col-md-6 '>
+        <button type="button" class="btn">Continue</button>
+      </div>
+    </div>
+  </div>
+
+</div>

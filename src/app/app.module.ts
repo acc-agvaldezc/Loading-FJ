@@ -12,6 +12,9 @@ import { JourneysModule } from './journeys/journeys.module';
 //Services
 import { YelpService } from './services/yelp.service';
 import { AuthService } from './services/auth.service';
+//Gráficos
+import { ChartsModule } from 'ng2-charts';
+import { GraficoComponent } from './grafico/grafico.component';
 
 //Components
 import { AppComponent } from './app.component';
@@ -27,7 +30,8 @@ import { baseRoutes } from './router/routes';
     AppComponent,
     FooterComponent,
     GoogleMapsComponent,
-    NavbarComponent
+    NavbarComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import { baseRoutes } from './router/routes';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAio5BHzYvZbgt7EVXXIyQdM5sL9fb5atU'
     }),
-    JourneysModule
+    JourneysModule,
+    ChartsModule,    
   ],
   providers: [YelpService, AuthService],
   bootstrap: [AppComponent]

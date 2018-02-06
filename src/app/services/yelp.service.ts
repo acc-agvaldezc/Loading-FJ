@@ -42,7 +42,6 @@ export class YelpService {
 
         //return restaurants results
         return this._http.get(`${this._proxyUrl}${this._yelpSearchApi}`, { headers: this.header, params: params })
-            .do(resp => console.log(resp))
             .catch(this.handleError);
     }
 

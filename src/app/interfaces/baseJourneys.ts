@@ -66,17 +66,17 @@ const baseKoreanJourney: IJourney = {
 }
 
 export interface IBaseJourneys {
-    baseAmericanJourney: IJourney,
-    baseItalianJourney: IJourney,
-    baseJapaneseJourney: IJourney,
-    baseKoreanJourney: IJourney,
-    baseMexicanJourney: IJourney
+    American: IJourney,
+    Italian: IJourney,
+    Japanese: IJourney,
+    Korean: IJourney,
+    Mexican: IJourney
 }
 
 export const newJourneys: IBaseJourneys = {
-    baseAmericanJourney: baseAmericanJourney,
-    baseMexicanJourney: baseMexicanJourney,
-    baseItalianJourney: baseItalianJourney,
-    baseJapaneseJourney: baseJapaneseJourney,
-    baseKoreanJourney: baseKoreanJourney
+    'American': baseAmericanJourney,
+    'Mexican': baseMexicanJourney,
+    'Italian': baseItalianJourney,
+    'Japanese': baseJapaneseJourney,
+    'Korean': baseKoreanJourney
 }

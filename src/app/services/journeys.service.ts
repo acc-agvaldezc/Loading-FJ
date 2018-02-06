@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
-
+import { forkJoin } from 'rxjs/observable/forkJoin';
 import { IJourney, IUserJourneys } from '../interfaces/journeys';
 import { AuthService } from './auth.service';
 import { YelpService } from './yelp.service';
@@ -20,7 +20,7 @@ export class JourneysService {
   private _journeyUrl = 'https://api.myjson.com/bins/qbqcl'; // Prueba con 5 elementos
   private _userJourneys: IUserJourneys;
 
-  constructor(private _client: HttpClient, private _authService: AuthService, private _yelpService: YelpService) {}
+  constructor(private _client: HttpClient, private _authService: AuthService, private _yelpService: YelpService) { }
 
   getUserJourneys(): IUserJourneys {
 
@@ -40,14 +40,12 @@ export class JourneysService {
       this._userJourneys = userJourneys;
       return this._userJourneys;
     } else {
+      
       //User logged in for first time on system
       console.log('User logged in for first time on system. Creating journeys data.');
-      this._userJourneys = {
-        username: user.username,
-        journeys:  this.createJourneys()
-      }
 
-      localStorage.setItem(`${user.username}Journeys`, JSON.stringify(this._userJourneys));
+      this.createJourneys(user.username);
+
       return this._userJourneys;
     }
   }
@@ -57,42 +55,46 @@ export class JourneysService {
     return Observable.throw(err);
   }
 
-  private createJourneys(): IJourney[] {
+  private createJourneys(username: string): void {
     let journeys: IBaseJourneys = newJourneys;
-    journeys.baseAmericanJourney.tasks = this.createTasks(journeys.baseAmericanJourney.name)
-    journeys.baseJapaneseJourney.tasks = this.createTasks(journeys.baseJapaneseJourney.name)
-    journeys.baseKoreanJourney.tasks = this.createTasks(journeys.baseKoreanJourney.name)
-    journeys.baseMexicanJourney.tasks = this.createTasks(journeys.baseMexicanJourney.name)
-    journeys.baseItalianJourney.tasks = this.createTasks(journeys.baseItalianJourney.name)
+    let observables = [];
 
-    return [
-      journeys.baseAmericanJourney,
-      journeys.baseItalianJourney,
-      journeys.baseJapaneseJourney,
-      journeys.baseKoreanJourney,
-      journeys.baseMexicanJourney
-    ]
-  }
+    for (let journey of Object.values(journeys)) {
+      observables.push(this._yelpService.searchRestaurants(journey.name, 37.767413217936834, -122.42820739746094, 10));
+    }
 
-  private createTasks(journey: string): ITask[] {
+    let fork: Subscription = forkJoin(observables)
+      .subscribe((res: IYelpResponse[]) => {
+          let journeyNames = Object.keys(journeys);
+          let journeysArray: IJourney[] = [];
 
-    let tasks : ITask[] = [];
+          for (let index in res) {
+            let tasks: ITask[] = [];
 
-    let subscription: Subscription = this._yelpService.searchRestaurants(journey, 37.767413217936834, -122.42820739746094, 10)
-      .subscribe(res => {
-        for(let business of res.businesses) {
-          tasks.push({
-            name: business.name,
-            completed: false,
-            taskData: business,
-            isCurrentTask: false
-          });
-        }
-      },
-      error => console.log(<any>error),
-      () => subscription.unsubscribe()
-    );
+            for (let business of res[index].businesses) {
+              tasks.push({
+                name: business.name,
+                completed: false,
+                taskData: business,
+                isCurrentTask: false
+              });
+            }
 
-    return tasks;
+            journeys[journeyNames[index]].tasks = tasks;
+            journeysArray.push(journeys[journeyNames[index]]);
+          }
+
+          this._userJourneys = {
+            username: username,
+            journeys: journeysArray
+          }
+
+          localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
+          console.log(this._userJourneys);
+        },
+        () => fork.unsubscribe()
+      );
+
+    return;
   }
 }

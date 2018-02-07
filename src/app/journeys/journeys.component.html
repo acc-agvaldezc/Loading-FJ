@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <header class="header header-style">
+    Welcome! Choose a track to get started.
+  </header>
+  <br>
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-2 header" *ngFor='let journey of journeys'>
+          <ngb-progressbar [value]='journey.completionPercentage'></ngb-progressbar>
+          <div class="label-div">
+            <div class="info-path">
+              <a class="route" [routerLink]="['/journeys', journey.id]">
+                <img class="food-icon" [src]='journey.imgUrl'>{{ journey.name }}
+              </a>
+            </div>
+            <span class="completion-path" *ngIf='journeyCurrent != null'>
+              {{ journey.completionPercentage / 100 | percent : '1.0' }}
+            </span>
+          </div>
+          <section class="description"> {{ journey.description }} </section>
+          <footer class="duration">Duration: {{ journey.duration }} </footer>
+        </div>
+        
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,54 @@
+canvas {
+    display: inline-block !important;
+}
+
+.pie { 
+    text-align: center;
+}
+
+.section {
+    margin-bottom: -30px;
+}
+
+.iconPosition {
+    position: relative;
+    top: -102px;
+    margin-right: 100px;
+}
+
+.foodIcon {
+    height: 50px;
+    width: 50px;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.completion {
+    font-size: 16px;
+    color: #AAAAAA;
+}
+
+.description {
+    text-align: left;
+    font-size: 15px;
+}
+
+.duration {
+    height: 40px;
+    padding-top: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #F2F2F2;
+}
+
+.follow-button {
+    margin-top: 5px;
+    color: white;
+    width: 100%;
+    background-color: #FF503E;
+}

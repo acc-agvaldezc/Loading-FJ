@@ -1,0 +1,94 @@
+<div class="container">
+  <section class="routes">
+    <div class="row">
+      <div class="col-md-8">
+        <a *ngFor='let journey of journeys'>
+          <button class="btn btn-default routeButton" 
+            [routerLink]="['/journeys', journey.id]" 
+            [routerLinkActive]='["active"]'>{{ journey.name }}
+          </button>
+        </a>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-2">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn order-button" id="dropMenu" ngbDropdownToggle>Order By:</button>
+          <div ngbDropdownMenu aria-labelledby="dropMenu">
+            <button class="dropdown-item">Most Recent</button>
+            <button class="dropdown-item">Highest Rated</button>
+            <button class="dropdown-item">Top Reviewed</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="graph">
+    <app-grafico 
+      [journeyName]='selectedJourney.name' 
+      [journeyDescription]='selectedJourney.description' 
+      [journeyCompletePercent]=selectedJourney.completionPercentage
+      [journeyDuration]='selectedJourney.duration'
+      [journeyImage]='selectedJourney.imgUrl'
+      [journeyCurrent]='selectedJourney.currentTask'>
+    </app-grafico>
+  </section>
+</div>
+
+<div class='container-fluid accordion'>
+  <section class="row py-5">
+    <div class='col-md-10 offset-md-1 col-sm-12'>
+      <ngb-accordion *ngFor='let task of tasks; let i=index'>
+        <ngb-panel>
+          <ng-template ngbPanelTitle>
+            <!-- <span class="oi oi-circle-check"> -->
+            <span>{{ i + 1 }} - {{ task.name }}</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="ml-auto mr-auto">
+                  <p>{{ task.taskData.name }}</p>
+                  <ngb-rating [rate]='task.taskData.rating' max='5' readonly=true></ngb-rating>
+                  <p>
+                    {{ task.taskData.price }}
+                    <li *ngFor='let category of task.taskData.categories'>{{ category.title }}</li>
+                  </p>
+                  <p>{{ task.taskData.location.address1 }}</p>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="ml-auto mr-auto">
+                  <p>Hours</p>
+                  <p>{{ (task.taskData.isClosed == 'false' ? 'Closed' : 'Open') }}</p>
+                  <p>
+                    <span class="oi oi-phone"></span>{{ task.taskData.phone }}</p>
+                  <p>
+                    <span class="oi oi-external-link"></span>
+                    Url: <a href="{{ task.taskData.url }}"> {{ task.name }}</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                    <img class="image-rest" [src]='task.taskData.image_url'>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                    <app-google-maps 
+                      [_lat]="task.taskData.coordinates.latitude" 
+                      [_lng]="task.taskData.coordinates.longitude" 
+                      [_businessName]="task.name">
+                    </app-google-maps>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+  </section>
+</div>

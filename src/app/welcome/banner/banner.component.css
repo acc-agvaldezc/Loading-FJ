@@ -1,0 +1,33 @@
+.btn {
+    border: none; /* Remove borders */
+    color:white; /* Add a text color */
+    padding: 14px 60px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    background-color: #ff503e;
+    border-radius:0;
+}
+.toolTip{
+    vertical-align: middle;
+    height: 45px;
+    background-color:rgba(0, 0, 0, 0.363);
+    color:white;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    top: -45px;
+    margin-bottom: -45px;
+    cursor: pointer; 
+    border-radius: 0;
+    z-index: 1200;
+}
+.BannerHeightB {
+    height: 250px;
+}
+
+.BannerHeightA {
+    height: 150px;
+}
+
+.textBlack{
+    color: black !important;
+}

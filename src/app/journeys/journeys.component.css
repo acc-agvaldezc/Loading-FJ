@@ -1,0 +1,49 @@
+.header {
+    text-align: center;
+}
+
+.header-style {
+    margin-top: 15px;
+    font-size: 25px;
+}
+
+.label-div {
+    height: 10px;
+}
+
+.route { color: white; }
+.route:hover { text-decoration: none; }
+
+.info-path {
+    position: relative;
+    top: -75px;
+    margin-bottom: -18px;
+    color: white;
+    font-size: 18px;
+}
+
+.completion-path {
+    position: relative;
+    top: -60px;
+    color: white;
+    font-size: 14px;
+}
+
+.food-icon {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
+
+.description {
+    text-align: left;
+    font-size: 12px;
+}
+
+.duration {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 11px;
+}

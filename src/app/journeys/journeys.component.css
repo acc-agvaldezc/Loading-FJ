@@ -11,6 +11,9 @@
     height: 10px;
 }
 
+.route { color: white; }
+.route:hover { text-decoration: none; }
+
 .info-path {
     position: relative;
     top: -75px;

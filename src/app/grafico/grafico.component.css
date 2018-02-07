@@ -1,32 +1,18 @@
-.btn {
-    border: none; /* Remove borders */
-    color:white; /* Add a text color */
-    padding: 14px 60px; /* Add some padding */
-    cursor: pointer; /* Add a pointer cursor on mouse-over */
-    background-color: #ff503e;
-    border-radius:0;
-}
-
-.btnBco {
-    border: none; /* Remove borders */
-    color:black; /* Add a text color */
-    padding: 14px 60px; /* Add some padding */
-    cursor: pointer; /* Add a pointer cursor on mouse-over */
-    background-color: #F7F8F1;
-    border-radius:0;
-}
-
-.pie {
-    text-align: center;
-}
-
 canvas {
     display: inline-block !important;
 }
 
+.pie { 
+    text-align: center;
+}
+
+.section {
+    margin-bottom: -30px;
+}
+
 .iconPosition {
     position: relative;
-    top: -98px;
+    top: -102px;
     margin-right: 100px;
 }
 
@@ -35,6 +21,34 @@ canvas {
     width: 50px;
 }
 
-.text{
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.completion {
+    font-size: 16px;
+    color: #AAAAAA;
+}
+
+.description {
     text-align: left;
+    font-size: 15px;
+}
+
+.duration {
+    height: 40px;
+    padding-top: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #F2F2F2;
+}
+
+.follow-button {
+    margin-top: 5px;
+    color: white;
+    width: 100%;
+    background-color: #FF503E;
 }

@@ -1,26 +1,30 @@
 <div class="row pie">
-  <div class=' col-md-4 m-0 p-0'>
+  <div class=' col-md-4 section'>
     <canvas baseChart [data]="pieChartData" [chartType]="pieChartType" [colors]="pieChartColor" (chartHover)="chartHovered($event)"
       (chartClick)="chartClicked($event)" [options]='pieChartOptions'>
     </canvas>
     <div class="iconPosition col-md-12">
-      <img class="foodIcon" src='assets/Icons/American.png'>
+      <img class="foodIcon" [src]='journeyImage'>
     </div>
   </div>
 
-  <div class='col-md-8'>
-    <div class='row'>
-      <div class='col-md-12 text'>
-        <h3>{{journeyName}}</h3>
-        <p>{{journeyDescription}}</p>
-      </div>
-      <div class='col-md-6'>
-        <button type="button" class="btnBco">{{journeyDuration}}</button>
-      </div>
-      <div class='col-md-6 '>
-        <button type="button" class="btn">Continue</button>
-      </div>
-    </div>
+  <div class="col-md-4">
+    <p class="description">
+      <span class="title"> {{ journeyName }} </span>
+      <span class="completion">
+        {{ journeyCurrent != null ? (journeyCompletePercent / 100) : '' | percent : '1.0' }}
+      </span>
+      <br> {{ journeyDescription }}
+    </p>
   </div>
-
+  
+  <div class="col-md-1"></div>
+  <div class="col-md-3">
+    <div class="duration">
+      Duration: {{ journeyDuration }}
+    </div>
+    <button class="btn btn-default follow-button" (click)='followTask()'>
+      {{ journeyCurrent == null ? 'Follow' : 'Continue' }}
+    </button>
+  </div>
 </div>

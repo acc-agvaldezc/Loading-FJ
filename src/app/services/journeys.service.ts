@@ -88,7 +88,8 @@ export class JourneysService {
 
           this._userJourneys = {
             username: username,
-            journeys: journeysArray
+            journeys: journeysArray,
+            currentJourney: ''
           }
 
           localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
@@ -111,5 +112,27 @@ export class JourneysService {
     });
     //console.log(path);
     return path;
+  }
+
+  updateFollow(username: string, journeys: IJourney[], name: string): void {
+    this._userJourneys = {
+      username: username,
+      journeys: journeys,
+      currentJourney: name
+    }
+
+    console.log(this._userJourneys);
+    localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
+  }
+
+  unfollow(username: string, journeys: IJourney[]): void {
+    this._userJourneys = {
+      username: username,
+      journeys: journeys,
+      currentJourney: ''
+    }
+
+    console.log(this._userJourneys);
+    localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
   }
 }

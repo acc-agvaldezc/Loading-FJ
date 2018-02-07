@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { JourneysService } from '../services/journeys.service';
+import { AuthService } from '../services/auth.service';
+import { IUserJourneys } from '../interfaces/journeys';
 
 @Component({
   selector: 'app-grafico',
@@ -13,7 +16,7 @@ export class GraficoComponent implements OnInit, OnChanges {
   @Input() journeyImage: string;
   @Input() journeyCurrent: string;
 
-  constructor() { }
+  constructor(private _journeyService: JourneysService, private _authService: AuthService) { }
 
   ngOnInit() { this.pieChartData = [this.journeyCompletePercent, (100 - this.journeyCompletePercent)]; }
   ngOnChanges() { this.pieChartData = [this.journeyCompletePercent, (100 - this.journeyCompletePercent)]; }
@@ -33,7 +36,25 @@ export class GraficoComponent implements OnInit, OnChanges {
   };
   public pieChartLabels: string[] = ['Complete', 'Incomplete'];
   
-  followTask() {
-    alert('Already following!');
+  followTask(name: string): void {
+    if(this.journeyCurrent == '') {
+      alert('You are now following the path: ' + name + '!');
+      let user = this._authService.getUser();
+      let userJourneys = (JSON.parse(localStorage.getItem(`${user.username}Journeys`)));
+      let array = userJourneys.journeys;
+      this._journeyService.updateFollow(user.username, array, name);
+      
+      this.journeyCurrent = this.journeyName;
+    } else {
+      confirm('You cannot follow this path, you are already following one');
+    }
   }
+
+  // unfollowTask(name: string): void {
+  //   alert('You are not following the path: ' + name + '!');
+  //   let user = this._authService.getUser();
+  //   let userJourneys = (JSON.parse(localStorage.getItem(`${user.username}Journeys`)));
+  //   let array = userJourneys.journeys;
+  //   this._journeyService.unfollow(user.username, array);
+  // }
 }

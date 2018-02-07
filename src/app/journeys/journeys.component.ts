@@ -13,6 +13,7 @@ export class JourneysComponent implements OnInit {
   
   userJourneys: IUserJourneys;
   journeys: IJourney[];
+  current: string;
   
   constructor(private _journeyService: JourneysService, private _config: NgbProgressbarConfig) { 
     _config.max = 100;
@@ -21,10 +22,11 @@ export class JourneysComponent implements OnInit {
 
     this.userJourneys = this._journeyService.getUserJourneys();
     this.journeys = this.userJourneys.journeys;
+    this.current = this.userJourneys.currentJourney;
   }
 
   ngOnInit() {
-    console.log(this.userJourneys);
-    console.log(this.journeys);
+    // console.log(this.userJourneys);
+    // console.log(this.journeys);
   }
 }

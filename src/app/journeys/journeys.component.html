@@ -16,8 +16,8 @@
                 <img class="food-icon" [src]='journey.imgUrl'>{{ journey.name }}
               </a>
             </div>
-            <span class="completion-path" *ngIf='journeyCurrent != null'>
-              {{ journey.completionPercentage / 100 | percent : '1.0' }}
+            <span class="completion-path">
+              {{ current != journey.name ? '' : (journey.completionPercentage / 100 | percent : '1.0') }}
             </span>
           </div>
           <section class="description"> {{ journey.description }} </section>

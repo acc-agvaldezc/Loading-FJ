@@ -16,4 +16,5 @@ export interface IJourney {
 export interface IUserJourneys {
     username: string;
     journeys: IJourney[];
+    currentJourney: string;
 }

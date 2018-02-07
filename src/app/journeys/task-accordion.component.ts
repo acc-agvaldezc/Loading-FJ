@@ -22,14 +22,14 @@ export class TaskAccordionComponent implements OnInit {
   constructor(private _route: ActivatedRoute, private _router: Router, private _pathService: JourneysService) { 
     
       this._route.params.subscribe((params) => {
-        this.getJourney(parseInt(params.id));
+        this.getJourney(params.name);
       });
 
       this.userJourneys = this._pathService.getUserJourneys();
       this.journeys = this.userJourneys.journeys;
   }
 
-  getJourney(id: number) {
+  getJourney(id: string) {
     this.selectedJourney = this._pathService.getJourney(id)
     this.tasks = this.selectedJourney.tasks;
   }

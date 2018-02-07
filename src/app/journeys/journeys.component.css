@@ -1,9 +1,14 @@
+.back {
+    background-color: #F2F2F2;
+}
+
 .header {
     text-align: center;
 }
 
 .header-style {
-    margin-top: 15px;
+    padding-top: 15px;
+    margin-bottom: 15px;
     font-size: 25px;
 }
 

@@ -12,7 +12,7 @@
     <p class="description">
       <span class="title"> {{ journeyName }} </span>
       <span class="completion">
-        {{ journeyCurrent != null ? (journeyCompletePercent / 100) : '' | percent : '1.0' }}
+        {{ journeyCurrent != journeyName ? '' : (journeyCompletePercent / 100 | percent : '1.0') }}
       </span>
       <br> {{ journeyDescription }}
     </p>
@@ -23,8 +23,10 @@
     <div class="duration">
       Duration: {{ journeyDuration }}
     </div>
-    <button class="btn btn-default follow-button" (click)='followTask()'>
-      {{ journeyCurrent == null ? 'Follow' : 'Continue' }}
-    </button>
+
+      <button class="btn btn-default follow-button" (click)='followTask(journeyName)'>
+        {{ journeyCurrent != journeyName ? 'Follow' : 'Continue' }}
+      </button>
+
   </div>
 </div>

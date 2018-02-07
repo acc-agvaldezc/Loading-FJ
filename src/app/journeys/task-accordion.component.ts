@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JourneysService } from '../services/journeys.service';
 import { IJourney, IUserJourneys } from '../interfaces/journeys';
@@ -18,7 +18,8 @@ export class TaskAccordionComponent implements OnInit {
   userJourneys: IUserJourneys;
   journeys: IJourney[];
   tasksDetails: IYelpBusinessDetailResponse[];
-  
+  current: string;
+
   constructor(private _route: ActivatedRoute, private _router: Router, private _pathService: JourneysService) { 
     
       this._route.params.subscribe((params) => {
@@ -27,6 +28,7 @@ export class TaskAccordionComponent implements OnInit {
 
       this.userJourneys = this._pathService.getUserJourneys();
       this.journeys = this.userJourneys.journeys;
+      this.current = this.userJourneys.currentJourney;
   }
 
   getJourney(id: string) {
@@ -35,7 +37,8 @@ export class TaskAccordionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.selectedJourney);
-    console.log(this.tasks);
+    // console.log(this.selectedJourney);
+    // console.log(this.tasks);
+    // console.log(this.current);
   }
 }

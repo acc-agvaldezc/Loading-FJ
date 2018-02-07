@@ -19,12 +19,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 //Routes
 import { baseRoutes } from './router/routes';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown';
 import { IUser } from '../../interfaces/user';
 import { AuthService, TOKEN_NAME } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,14 +11,14 @@ import { AuthService, TOKEN_NAME } from '../../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  
+  errorMessage: string = '';
   navbarBrandTitle: string = 'FoodieJourney';
   loggedIn: boolean = false;
   user: IUser;
-
   loginForm: FormGroup;
   
-  constructor(private _formBuilder: FormBuilder, private _authService: AuthService) {
+  constructor(private _formBuilder: FormBuilder, private _authService: AuthService, private _router: Router) {
     this.createLoginForm();
 
     if (this._authService.isLoggedIn()) {
@@ -45,7 +46,13 @@ export class NavbarComponent implements OnInit {
     let password = formValues.password;
 
     this.loggedIn = this._authService.login(username, password);
-    this.user = this._authService.getUser();
+    
+    if (this.loggedIn) {
+      this.user = this._authService.getUser();
+      this._router.navigateByUrl('/journeys');
+    } else {
+      this.errorMessage = 'Invalid username or password, please try again';
+    }
   }
 
   logout(): void {

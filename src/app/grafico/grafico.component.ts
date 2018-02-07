@@ -26,8 +26,12 @@ export class GraficoComponent implements OnInit, OnChanges {
     width: 100,
     height: 100,
     responsive: false,
-    maintainAspectRatio: true
+    maintainAspectRatio: true,
+    legend: {
+      display: false
+    }
   };
+  public pieChartLabels: string[] = ['Complete', 'Incomplete'];
   
   followTask() {
     alert('Already following!');

@@ -100,12 +100,12 @@ export class JourneysService {
     return;
   }
 
-  getJourney(id: number): IJourney {
+  getJourney(id: string): IJourney {
     let j: IUserJourneys;
     let path: IJourney;
     j = this.getUserJourneys();
     j.journeys.map(data => {
-      if(data.id === id) {
+      if(data.name === id) {
         path = data;
       }
     });

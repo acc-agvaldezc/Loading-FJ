@@ -7,7 +7,7 @@ import { TaskAccordionComponent } from '../journeys/task-accordion.component';
   imports: [
     RouterModule.forChild([
         { path: 'journeys', component: JourneysComponent },
-        { path: 'journeys/:id', component: TaskAccordionComponent }
+        { path: 'journeys/:name', component: TaskAccordionComponent }
     ])
   ],
   exports: [ RouterModule ]

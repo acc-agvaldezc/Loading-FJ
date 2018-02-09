@@ -25,10 +25,12 @@ export class TaskAccordionComponent implements OnInit {
       this._route.params.subscribe((params) => {
         this.getJourney(params.name);
       });
-
-      this.userJourneys = this._pathService.getUserJourneys();
-      this.journeys = this.userJourneys.journeys;
-      this.current = this.userJourneys.currentJourney;
+      
+      this._pathService.getUserJourneys().subscribe((userJourneys: IUserJourneys) => {
+        this.userJourneys = userJourneys;
+        this.journeys = userJourneys.journeys;
+        this.current = userJourneys.currentJourney
+      })
   }
 
   getJourney(id: string) {
@@ -37,8 +39,5 @@ export class TaskAccordionComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.selectedJourney);
-    // console.log(this.tasks);
-    // console.log(this.current);
   }
 }

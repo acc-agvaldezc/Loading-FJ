@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { JourneysService } from '../services/journeys.service';
 import { IJourney, IUserJourneys } from '../interfaces/journeys';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap/progressbar/progressbar-config';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { IYelpResponse } from '../interfaces/yelp';
+//import { userInfo } from 'os';
 
 @Component({
   selector: 'app-journeys',
@@ -9,24 +12,25 @@ import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap/progressbar/pro
   styleUrls: ['./journeys.component.css']
 })
 
-export class JourneysComponent implements OnInit {
+export class JourneysComponent implements OnInit{
   
   userJourneys: IUserJourneys;
   journeys: IJourney[];
   current: string;
-  
-  constructor(private _journeyService: JourneysService, private _config: NgbProgressbarConfig) { 
+  information: boolean = false;
+  constructor(private _journeyService: JourneysService, private _config: NgbProgressbarConfig, private _changedetector: ChangeDetectorRef) { 
     _config.max = 100;
     _config.height = '125px';
     _config.type = 'danger';
 
-    this.userJourneys = this._journeyService.getUserJourneys();
-    this.journeys = this.userJourneys.journeys;
-    this.current = this.userJourneys.currentJourney;
   }
-
+  
   ngOnInit() {
-    // console.log(this.userJourneys);
-    // console.log(this.journeys);
+    this._journeyService.getUserJourneys().subscribe((userJourneys: IUserJourneys) => {
+      this.userJourneys = userJourneys;
+      this.journeys = userJourneys.journeys;
+      this.current = userJourneys.currentJourney
+      this.information = true;
+    })
   }
 }

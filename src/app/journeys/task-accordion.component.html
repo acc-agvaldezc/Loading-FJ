@@ -59,7 +59,7 @@
             <div (click)='getDetail(task.taskData.id);'>
               <div class="circle label">
                 <span>{{ i + 1 }}</span></div>
-              <span> {{ task.name }}</span>
+              <span> - {{ task.name }}</span>
             </div>
           </ng-template>
           <ng-template ngbPanelContent>
@@ -109,13 +109,13 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 gallery">
                   <app-gallery
                     [_photos]='taskDetails.photos'>
                   </app-gallery>
                 </div>
               
-                <div class="col-md-3">
+                <div class="col-md-3 map">
                   <app-google-maps 
                     [_lat]="taskDetails.coordinates.latitude" 
                     [_lng]="taskDetails.coordinates.longitude" 
@@ -123,9 +123,9 @@
                   </app-google-maps>
                 </div>
 
-                <div class="col-md-1">
-                  <a class="link" [routerLink]="['../detail', taskDetails.id]">
-                    Next <span class="oi oi-chevron-right"></span>
+                <div class="col-md-1 next">
+                  <a class="link" [routerLink]="['/journeys', selectedJourney.name, taskDetails.id]">
+                    <span class="oi oi-chevron-right"></span>
                   </a>                    
                 </div>
                 

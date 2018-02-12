@@ -47,13 +47,11 @@ export class TaskAccordionComponent implements OnInit {
   getDetail(id: string) {
     this._yelpService.getBusinessDetail(id).subscribe((detail: IYelpBusinessDetailResponse) => {
       this.taskDetails = detail;
-      console.log(this.taskDetails);
       this.checked1 = true;
     });
 
     this._yelpService.getBusinessDetailReviews(id).subscribe((review: IYelpReview) => {
       this.taskReview = review;
-      console.log(this.taskReview);
       this.checked2 = true;
     });
   }

@@ -11,13 +11,6 @@
 .accordion { background-color: #F2F2F2; }
 .order-button { background-color: white; }
 
-.image-rest {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    /* object-fit: contain; */
-}
-
 ngb-rating {
     color: #EEC900;
     font-size: 22px;
@@ -45,7 +38,7 @@ ngb-rating {
 .category { margin-top: -13px; }
 .link { color: #3399FF }
 
-.buttons { display: block; }
+.buttons, .map, .gallery { display: block; }
 .dropdown { display: none; }
 
 .routeButton {
@@ -65,8 +58,12 @@ ngb-rating {
 }
 
 @media (max-width: 540px) {
-    .buttons { display: none; }
+    .buttons, .map, .gallery { display: none; }
     .dropdown { display: block; }
+}
+
+@media (max-width: 767px) {
+    .next { text-align: center; }
 }
 
 .red { color: red; font-weight: bold; }

@@ -13,6 +13,7 @@ import { ChartsModule } from 'ng2-charts';
 import { GalleryComponent } from '../gallery/gallery.component';
 import { LastscreenComponent } from '../lastscreen/lastscreen.component';
 import { HoursPipe } from './hours.pipe';
+import { RouteGuardService } from '../services/route-guard.service';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { HoursPipe } from './hours.pipe';
     HoursPipe
   ],
   providers: [
-    JourneysService
+    JourneysService,
+    RouteGuardService
   ],
   exports: [
     JourneysComponent

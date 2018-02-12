@@ -1,9 +1,12 @@
 <!-- Bigger Container -->
-<div class='card card-body bg' *ngIf='checked1 && checked2'>
+<div class='card card-body bg'>
   <!-- Info Container -->
-  <div class="container bw">
+  <a class="breadcrumb" [routerLink]="['/journeys', name]">
+    <span class="oi oi-arrow-left arrow"> Journeys</span><span> / {{ name }}</span>
+  </a>
+  
+  <div class="container bw" *ngIf='checked1'>
     <div>
-
       <!-- Title -->
       <div class="row">
         <h2 class="title">{{ taskDetails.name }}</h2>

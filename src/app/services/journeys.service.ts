@@ -84,7 +84,7 @@ export class JourneysService {
           }
           this.subjectUserJourneys.next(this._userJourneys)
           // localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
-          // console.log(this._userJourneys);
+          console.log(this._userJourneys);
         },
         () => fork.unsubscribe()
       );
@@ -92,14 +92,13 @@ export class JourneysService {
     return;
   }
 
-  getJourney(id: string): IJourney {
+  getJourney(name: string): IJourney {
     let j: IUserJourneys;
     let path: IJourney;
 
     this.getUserJourneys().subscribe((userJourneys: IUserJourneys) => {
       userJourneys.journeys.map(paths => {
-        if(paths.name === id){
-          console.log("si soy igual nigga");
+        if(paths.name === name){
           path = paths;
           return path;
         }
@@ -108,25 +107,25 @@ export class JourneysService {
     return path
   }
 
-  updateFollow(username: string, journeys: IJourney[], name: string): void {
-    this._userJourneys = {
-      username: username,
-      journeys: journeys,
-      currentJourney: name
-    }
+  // updateFollow(username: string, journeys: IJourney[], name: string): void {
+  //   this._userJourneys = {
+  //     username: username,
+  //     journeys: journeys,
+  //     currentJourney: name
+  //   }
 
-    console.log(this._userJourneys);
-    localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
-  }
+  //   console.log(this._userJourneys);
+  //   localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
+  // }
 
-  unfollow(username: string, journeys: IJourney[]): void {
-    this._userJourneys = {
-      username: username,
-      journeys: journeys,
-      currentJourney: ''
-    }
+  // unfollow(username: string, journeys: IJourney[]): void {
+  //   this._userJourneys = {
+  //     username: username,
+  //     journeys: journeys,
+  //     currentJourney: ''
+  //   }
 
-    console.log(this._userJourneys);
-    localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
-  }
+  //   console.log(this._userJourneys);
+  //   localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
+  // }
 }

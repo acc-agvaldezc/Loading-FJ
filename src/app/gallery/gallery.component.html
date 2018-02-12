@@ -1,27 +1,17 @@
 
 <!-- Banner -->
-<div class='container-fluid p-0 m-0 j'>
+<div class='container-fluid p-0 m-0'>
   <ngb-carousel>
-    <!-- Primera imagen -->
     <ng-template ngbSlide>
-      <img src="https://5.imimg.com/data5/TS/JF/GLADMIN-21837018/delicious-chicken-burger-250x250.jpg" class="img-responsive" alt="Random first slide">
-      <div class="carousel-caption">
-      </div>
+      <img [src]="img1" class="img-responsive img-rest" alt="First slide">
     </ng-template>
 
-    <!-- Segunda imagen -->
     <ng-template ngbSlide>
-      <img src="http://mxcdn.ar-cdn.com/recipes/port250/d0cb5579-2ed9-47c8-91e7-fe08dd3c83ca.jpg" class="img-responsive" alt="Random first slide">
-      <div class="carousel-caption">
-      </div>
-    </ng-template>
-
-    <!-- Tercer imagen -->
-    <ng-template ngbSlide>
-      <img src="https://i0.wp.com/mexicosabroso.com/wp-content/uploads/2009/01/enchiladas.jpg?fit=250%2C250" class="img-responsive" alt="Random first slide">
-      <div class="carousel-caption">
-      </div>
+      <img [src]="img2" class="img-responsive img-rest" alt="Second slide">
     </ng-template>
     
+    <ng-template ngbSlide>
+        <img [src]="img3" class="img-responsive img-rest" alt="Third slide">
+      </ng-template>
   </ngb-carousel>
 </div>

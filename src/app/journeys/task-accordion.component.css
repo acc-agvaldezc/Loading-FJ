@@ -5,16 +5,11 @@
 
 .graph {
     margin-top: 20px;
-    margin-bottom: -10px;
+    margin-bottom: 5px;
 }
 
-.accordion {
-    background-color: #F2F2F2;
-}
-
-.order-button { 
-    background-color: white; 
-}
+.accordion { background-color: #F2F2F2; }
+.order-button { background-color: white; }
 
 .image-rest {
     height: 200px;
@@ -72,4 +67,22 @@ ngb-rating {
 @media (max-width: 540px) {
     .buttons { display: none; }
     .dropdown { display: block; }
-  }
+}
+
+.red { color: red; font-weight: bold; }
+.green { color: #3BE720; font-weight: bold; }
+
+.arrow {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    color: white;
+    text-align: center;
+    background-color: #FF503E;
+    display: inline-block;
+}

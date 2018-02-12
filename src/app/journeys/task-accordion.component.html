@@ -1,7 +1,6 @@
 <div class="container">
   <section class="routes">
     <div class="row">
-      
       <div class="col-md-8 buttons">
         <a *ngFor='let journey of journeys'>
           <button class="btn btn-default routeButton" 
@@ -27,9 +26,9 @@
 
       <div class="col-md-2">
         <div ngbDropdown class="d-inline-block">
-          <button class="btn order-button" id="dropMenu" ngbDropdownToggle>Order By</button>
+          <button class="btn routeButton" id="dropMenu" ngbDropdownToggle>Order By</button>
           <div ngbDropdownMenu aria-labelledby="dropMenu">
-            <button class="dropdown-item">Most Recent</button>
+            <button class="dropdown-item active-list">Most Recent</button>
             <button class="dropdown-item">Highest Rated</button>
             <button class="dropdown-item">Top Reviewed</button>
           </div>
@@ -57,67 +56,80 @@
         <ngb-panel>
           <ng-template ngbPanelTitle>
             <!-- <span class="oi oi-circle-check"> -->
-            <span>{{ i + 1 }} - {{ task.name }}</span>
+            <div (click)='getDetail(task.taskData.id);'>
+              <div class="circle label">
+                <span>{{ i + 1 }}</span></div>
+              <span> {{ task.name }}</span>
+            </div>
           </ng-template>
           <ng-template ngbPanelContent>
-            <div class="row">
-              <div class="col-md-3">
-                <div class="ml-auto mr-auto">
-                  <p class="title">{{ task.taskData.name }}</p>
-                  <p class="rating"><ngb-rating [rate]='task.taskData.rating' max='5' readonly=true></ngb-rating></p>
-                  <p class="price">{{ task.taskData.price }}</p>
-                  <p class="text-small category">
-                    <li *ngFor='let category of task.taskData.categories'>{{ category.title }}</li></p>
-                  <p class="text-small">{{ task.taskData.location.display_address }}</p>
-                </div>
-              </div>
-
-              <div class="col-md-3 info">
-                <div class="ml-auto mr-auto">
-                  <div>
-                    <p class="title">Today: </p>
-                    <p class="text-medium">{{ (task.taskData.isClosed == 'false' ? 'Closed' : 'Open') }}</p>
-                  </div>
-                  <hr>
-                  <div>
-                    <p class="text-medium link">
-                      <span class="oi oi-phone"></span>
-                      <a class="text-medium link" href="tel:{{ task.taskData.phone }}">{{ task.taskData.phone }}</a></p>
-                    <p class="text-medium link">
-                      <span class="oi oi-external-link"></span>
-                      <a class="text-medium link" href="{{ task.taskData.url }}"> {{ task.name }}</a>
+            <div class="container" *ngIf='checked1 && checked2'>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="ml-auto mr-auto">
+                    <p class="title">{{ taskDetails.name }}</p>
+                    <p class="rating">
+                      <ngb-rating [rate]='taskDetails.rating' max='5' readonly=true></ngb-rating>
+                      <a class="text-small link" href="{{ taskReview.reviews[0].url }}">{{ taskReview.total }} reviews</a>
                     </p>
+                    <p class="price">{{ taskDetails.price }}</p>
+                    <p class="text-small category">
+                      <li *ngFor='let category of taskDetails.categories'>{{ category.title }}</li></p>
+                    <p class="text-small">{{ taskDetails.location.display_address }}</p>
                   </div>
                 </div>
-              </div>
 
-              <div class="col-md-3">
-                <img class="image-rest" [src]='task.taskData.image_url'>
-              </div>
-            
-              <div class="col-md-3">
-                <app-google-maps 
-                  [_lat]="task.taskData.coordinates.latitude" 
-                  [_lng]="task.taskData.coordinates.longitude" 
-                  [_businessName]="task.name">
-                </app-google-maps>
-              </div>
+                <div class="col-md-2 info">
+                  <div class="ml-auto mr-auto">
+                    <div>
+                      <p class="title">Today:</p>
+                        <p class="text-medium rating">
+                          {{ taskDetails.hours[0].open[0].start | openHours }} - 
+                          {{ taskDetails.hours[0].open[0].end | openHours }}
+                        </p>
+                      
+                      <p class="rating" *ngIf='taskDetails.is_closed == false'>
+                        <span class="green">Open now</span>
+                      </p>
 
-              <!-- <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-6 col-sm-6">
-                    <img class="image-rest" [src]='task.taskData.image_url'>
-                  </div>
-                  <div class="col-md-6 col-sm-6">
-                    <app-google-maps 
-                      [_lat]="task.taskData.coordinates.latitude" 
-                      [_lng]="task.taskData.coordinates.longitude" 
-                      [_businessName]="task.name">
-                    </app-google-maps>
+                      <p class="rating" *ngIf='taskDetails.is_closed == true'>
+                          <span class="red">Closed now</span>
+                        </p>
+                    </div>
+                    <hr>
+                    <div>
+                      <p class="text-medium link">
+                        <span class="oi oi-phone"></span>
+                        <a class="text-medium link" href="tel:{{ taskDetails.phone }}">{{ taskDetails.display_phone }}</a></p>
+                      <p class="text-medium link rating">
+                        <span class="oi oi-external-link"></span>
+                        <a class="text-medium link" href="{{ taskDetails.url }}"> {{ taskDetails.name }}</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div> -->
 
+                <div class="col-md-3">
+                  <app-gallery
+                    [_photos]='taskDetails.photos'>
+                  </app-gallery>
+                </div>
+              
+                <div class="col-md-3">
+                  <app-google-maps 
+                    [_lat]="taskDetails.coordinates.latitude" 
+                    [_lng]="taskDetails.coordinates.longitude" 
+                    [_businessName]="taskDetails.name">
+                  </app-google-maps>
+                </div>
+
+                <div class="col-md-1">
+                  <a class="link" [routerLink]="['../detail', taskDetails.id]">
+                    Next <span class="oi oi-chevron-right"></span>
+                  </a>                    
+                </div>
+                
+              </div>
             </div>
           </ng-template>
         </ngb-panel>

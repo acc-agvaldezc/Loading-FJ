@@ -10,7 +10,9 @@ import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsComponent } from '../google-maps/google-maps.component';
 import { GraficoComponent } from '../grafico/grafico.component';
 import { ChartsModule } from 'ng2-charts';
-
+import { GalleryComponent } from '../gallery/gallery.component';
+import { LastscreenComponent } from '../lastscreen/lastscreen.component';
+import { HoursPipe } from './hours.pipe';
 
 @NgModule({
   imports: [
@@ -26,7 +28,10 @@ import { ChartsModule } from 'ng2-charts';
     JourneysComponent,
     TaskAccordionComponent,
     GoogleMapsComponent,
-    GraficoComponent
+    GraficoComponent,
+    GalleryComponent,
+    LastscreenComponent,
+    HoursPipe
   ],
   providers: [
     JourneysService

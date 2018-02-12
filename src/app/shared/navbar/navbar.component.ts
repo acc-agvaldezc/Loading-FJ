@@ -47,6 +47,7 @@ export class NavbarComponent implements OnInit {
 
     this.loggedIn = this._authService.login(username, password);
     
+    
     if (this.loggedIn) {
       this.user = this._authService.getUser();
       this._router.navigateByUrl('/journeys');
@@ -59,5 +60,6 @@ export class NavbarComponent implements OnInit {
     this._authService.logout();
     this.loggedIn = false;
     this.user = null;
+    this._router.navigateByUrl('/');
   }
 }

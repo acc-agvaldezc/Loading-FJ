@@ -7,11 +7,17 @@ import { Input } from '@angular/core';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  @Input() imagenes=[];
+  @Input() _photos = [];
+  img = 3;
+  img1: string;
+  img2: string;
+  img3: string;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.img1 = this._photos[0];
+    this.img2 = this._photos[1];
+    this.img3 = this._photos[2];
   }
-
 }

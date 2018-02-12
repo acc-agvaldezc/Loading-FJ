@@ -36,19 +36,24 @@ export class GraficoComponent implements OnInit, OnChanges {
   };
   public pieChartLabels: string[] = ['Complete', 'Incomplete'];
   
-  followTask(name: string): void {
-    if(this.journeyCurrent == '') {
+    followTask(name: string): void {
       alert('You are now following the path: ' + name + '!');
-      let user = this._authService.getUser();
-      let userJourneys = (JSON.parse(localStorage.getItem(`${user.username}Journeys`)));
-      let array = userJourneys.journeys;
-      this._journeyService.updateFollow(user.username, array, name);
-      
       this.journeyCurrent = this.journeyName;
-    } else {
-      confirm('You cannot follow this path, you are already following one');
     }
-  }
+    
+  // followTask(name: string): void {
+  //   if(this.journeyCurrent == '') {
+  //     alert('You are now following the path: ' + name + '!');
+  //     let user = this._authService.getUser();
+  //     let userJourneys = (JSON.parse(localStorage.getItem(`${user.username}Journeys`)));
+  //     let array = userJourneys.journeys;
+  //     this._journeyService.updateFollow(user.username, array, name);
+      
+  //     this.journeyCurrent = this.journeyName;
+  //   } else {
+  //     confirm('You cannot follow this path, you are already following one');
+  //   }
+  // }
 
   // unfollowTask(name: string): void {
   //   alert('You are not following the path: ' + name + '!');

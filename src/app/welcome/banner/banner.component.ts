@@ -12,4 +12,7 @@ export class BannerComponent implements OnInit {
   ngOnInit() {
   }
 
+  alertLogin() {
+    alert("To begin your Journey, please enter your credentials!");
+  }
 }

@@ -1,7 +1,8 @@
-.bg{
+.bg {
     background-color: #f2f2f2;
     border: none !important;
 }
+
 .btn {
     border: none; /* Remove borders */
     color: rgb(48, 144, 189) !important; /* Add a text color */
@@ -9,25 +10,6 @@
     cursor: pointer; /* Add a pointer cursor on mouse-over */
     background-color: #f2f2f2 !important;
     border-radius:0 !important;
-}
-.btnb {
-    border: none; /* Remove borders */
-    color: white !important; /* Add a text color */
-    padding: 14px 60px; /* Add some padding */
-    cursor: pointer; /* Add a pointer cursor on mouse-over */
-    background-color: gray !important;
-    border-radius:0 !important;
-}
-.btnc {
-    border: none; /* Remove borders */
-    color: white !important; /* Add a text color */
-    padding: 14px 60px; /* Add some padding */
-    cursor: pointer; /* Add a pointer cursor on mouse-over */
-    background-color: #ff503e !important;
-    border-radius:0 !important;
-}
-.bw{
-    background-color: white;
 }
 
 .btna {
@@ -37,29 +19,47 @@
     background-color: #f2f2f2 !important;
     border-radius:0 !important;
 }
-.bl{
-    background-color: #F9F8F6;
+
+.btnb {
+    border: none; /* Remove borders */
+    color: white !important; /* Add a text color */
+    padding: 14px 60px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    background-color: gray !important;
+    border-radius:0 !important;
 }
+
+.btnc {
+    border: none; /* Remove borders */
+    color: white !important; /* Add a text color */
+    padding: 14px 60px; /* Add some padding */
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    background-color: #ff503e !important;
+    border-radius:0 !important;
+}
+
+.bw { background-color: white; }
+.bl { background-color: #F9F8F6; }
 
 .info {
     padding-top: 10px;
     background-color: #F2F2F2;
-    }
-    
-    .title {
+}
+
+.title {
+    padding-left: 30px;
+    padding-top: 10px;
+    margin-bottom: -10px;
+}
+
+.hours {
     font-weight: bold;
-    font-size: 20px;
-    } 
+    font-size: 20px;
+}
 
-    .text-medium { 
-        font-size: 15px; 
-    }
-
-    .link {
-        color: #3399FF;
-    } 
-    .img{
-        /* height: 200px;
-        width: 100%; */
-        object-fit: cover;
-    }
+.rating { margin-top: -15px; }
+.text-small { font-size: 13px; }
+.text-medium { font-size: 15px; }
+.link { color: #3399FF }
+.red { color: red; font-weight: bold; }
+.green { color: #3BE720; font-weight: bold; }

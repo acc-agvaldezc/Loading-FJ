@@ -1,17 +1,7 @@
-.btn {
-    border: none; /* Remove borders */
-    color:white; /* Add a text color */
-    padding: 14px 60px; /* Add some padding */
-    cursor: pointer; /* Add a pointer cursor on mouse-over */
-    background-color: #ff503e;
-    border-radius:0;
-}
 .toolTip{
     vertical-align: middle;
     height: 45px;
     background-color:rgba(0, 0, 0, 0.363);
-    color:white;
-    font-weight: bold;
     position: relative;
     display: inline-block;
     top: -45px;
@@ -20,14 +10,41 @@
     border-radius: 0;
     z-index: 1200;
 }
-.BannerHeightB {
+
+.display { top: 80px; }
+
+.bannerA {
     height: 250px;
+    font-size: 40px;
+    font-weight: bold;
+    padding-top: 90px;
 }
 
-.BannerHeightA {
-    height: 150px;
+.bannerB {
+    height: 100px;
+    padding-top: 25px;
+    margin-bottom: 80px;
 }
 
-.textBlack{
+.start {
+    color: white;
+    margin-left: 15px;
+    padding: 14px 60px;
+    background-color: #FF503A;
+}
+
+.textBlack {
     color: black !important;
+    text-shadow: 2px 2px 2px white;
+}
+
+.journey { 
+    font-size: 20px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px white;
+}
+
+.discover {
+    color: white;
+    font-size: 15px;
 }

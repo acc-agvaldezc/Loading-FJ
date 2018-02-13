@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core/';
 import { GalleryComponent } from './gallery.component';
 
 describe('GalleryComponent', () => {
@@ -7,11 +7,18 @@ describe('GalleryComponent', () => {
   let fixture: ComponentFixture<GalleryComponent>;
 
   beforeEach(async(() => {
+    const GalleryComponentMock = {};
+
     TestBed.configureTestingModule({
-      declarations: [ GalleryComponent ]
+      declarations: [ GalleryComponent ],
+      schemas: [ NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: GalleryComponent, useValue: GalleryComponentMock },
+      ]      
     })
     .compileComponents();
   }));
+  
 
   beforeEach(() => {
     fixture = TestBed.createComponent(GalleryComponent);
@@ -22,4 +29,6 @@ describe('GalleryComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });

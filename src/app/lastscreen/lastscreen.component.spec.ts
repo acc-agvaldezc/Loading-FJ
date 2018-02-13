@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core/';
 import { LastscreenComponent } from './lastscreen.component';
 
 describe('LastscreenComponent', () => {
@@ -7,8 +7,14 @@ describe('LastscreenComponent', () => {
   let fixture: ComponentFixture<LastscreenComponent>;
 
   beforeEach(async(() => {
+    const LastscreenComponentMock={};
+
     TestBed.configureTestingModule({
-      declarations: [ LastscreenComponent ]
+      declarations: [ LastscreenComponent ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        {provide:LastscreenComponent, useValue: LastscreenComponentMock},
+      ]
     })
     .compileComponents();
   }));

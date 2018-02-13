@@ -45,4 +45,22 @@ export class GraficoComponent implements OnInit, OnChanges {
     }
   }
 
+  // unfollowTask(name: string): void {
+  //   alert('You are not following the path: ' + name + '!');
+  //   let user = this._authService.getUser();
+  //   let userJourneys = (JSON.parse(localStorage.getItem(`${user.username}Journeys`)));
+  //   let array = userJourneys.journeys;
+  //   this._journeyService.unfollow(user.username, array);
+  // }
+
+  public yo(dato){
+    if (dato) {
+      console.log('yo desde el codigo')
+      this.tu()
+    }
+  }
+
+  public tu() {
+    console.log('llamamos a tu')
+  }
 }

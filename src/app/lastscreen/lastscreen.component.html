@@ -1,5 +1,5 @@
 <!-- Bigger Container -->
-<div class='card card-body bg'>
+<div class='card card-body bg' *ngIf='checked1'>
   <!-- Info Container -->
   <a class="breadcrumb" [routerLink]="['/journeys', name]">
     <span class="oi oi-arrow-left arrow"> Journeys</span><span> / {{ name }}</span>
@@ -77,15 +77,31 @@
   <div class='card card-body bg'>
     <div class="row container bg ml-auto mr-auto">
       <div class="col-md-3">
-        <button class="btnc">Previous</button>
+        <button class="btnc" [routerLink]="['/journeys', name, previousTask.taskData.id]"
+          *ngIf="previousTask" (click)='goToPrevious();'>
+          Previous
+        </button>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-4">
-        <button class="btnb">Mark As started</button>
+        <div class="btnb started" *ngIf='currentTask.isCurrentTask == false && currentTask.completed == false' 
+          (click)="toggleTask()">
+          Mark as Started
+        </div>
+        <div class="btnb completed" *ngIf='currentTask.isCurrentTask == true && currentTask.completed == false' 
+          (click)="toggleTask()">
+          Mark as Completed
+        </div>
+        <div class="btnb disabled" *ngIf='currentTask.isCurrentTask == false && currentTask.completed == true'>
+          You have succesfully finished the challenge!
+        </div>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-3 bg">
-        <button class="btnc">Next</button>
+        <button class="btnc" [routerLink]="['/journeys', name, nextTask.taskData.id]" 
+          *ngIf="currentTask.completed && nextTask" (click)='goToNext();'>
+          Next Task
+        </button>
       </div>
     </div>
   </div>

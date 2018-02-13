@@ -5,6 +5,7 @@ import { IJourney, IUserJourneys } from '../interfaces/journeys';
 import { ITask } from '../interfaces/task';
 import { IYelpBusinessDetailResponse, IYelpBusiness, IYelpReview } from '../interfaces/yelp';
 import { YelpService } from '../services/yelp.service';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-journey-task',
@@ -12,7 +13,7 @@ import { YelpService } from '../services/yelp.service';
   styleUrls: ['./task-accordion.component.css']
 })
 
-export class TaskAccordionComponent implements OnInit {
+export class TaskAccordionComponent implements OnInit{
 
   selectedJourney: IJourney;
   tasks: ITask[];
@@ -31,7 +32,6 @@ export class TaskAccordionComponent implements OnInit {
     this._route.params.subscribe((params) => {
       this.getJourney(params.name);
     });
-
     this._pathService.getUserJourneys().subscribe((userJourneys: IUserJourneys) => {
       this.userJourneys = userJourneys;
       this.journeys = userJourneys.journeys;

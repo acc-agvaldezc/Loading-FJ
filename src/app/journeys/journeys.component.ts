@@ -24,7 +24,6 @@ export class JourneysComponent implements OnInit{
     _config.type = 'danger';
 
   }
-  
   ngOnInit() {
     this._journeyService.getUserJourneys().subscribe((userJourneys: IUserJourneys) => {
       this.userJourneys = userJourneys;

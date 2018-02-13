@@ -26,21 +26,25 @@ export class JourneysService {
   private subjectUserJourneys: Subject<IUserJourneys> = new Subject<IUserJourneys>();
   private updateUserJourneys: Observable<IUserJourneys> = this.subjectUserJourneys.asObservable().publishReplay().refCount()
 
+  private subjectJourney: Subject<IJourney> = new Subject<IJourney>();
+  private updateJourney: Observable<IJourney> = this.subjectJourney.asObservable().publishReplay().refCount()
+ 
   constructor(private _client: HttpClient, private _authService: AuthService, private _yelpService: YelpService) { }
 
   getUserJourneys(): Observable<IUserJourneys> {
     
     //If userJourneys already loaded
     if (this._userJourneys) {
-      console.log('User journeys loaded on cache.');
+      return this.updateUserJourneys;
+    }
+    else{
+       //Load userJourneys for first time after login
+      let user = this._authService.getUser();
+      let userJourneys: IUserJourneys;
+      this.createJourneys(user.username)
       return this.updateUserJourneys;
     }
     
-    //Load userJourneys for first time after login
-    let user = this._authService.getUser();
-    let userJourneys: IUserJourneys;
-    this.createJourneys(user.username)
-    return this.updateUserJourneys
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -49,6 +53,7 @@ export class JourneysService {
   }
 
   private createJourneys(username: string): void {
+    console.log('Creating userJourneys...')
     let journeys: IBaseJourneys = newJourneys;
     let observables = [];
 
@@ -107,25 +112,23 @@ export class JourneysService {
     return path
   }
 
-  // updateFollow(username: string, journeys: IJourney[], name: string): void {
-  //   this._userJourneys = {
-  //     username: username,
-  //     journeys: journeys,
-  //     currentJourney: name
-  //   }
+  updateFollow(name: string): void {
+    this._userJourneys.currentJourney = name;
+    this.subjectUserJourneys.next(this._userJourneys)
+    console.log(this._userJourneys)
+  }
+  
+  updateCurrentTask(task: ITask): void{
+    task.isCurrentTask = true;   
+    this.subjectUserJourneys.next(this._userJourneys)
+  }
 
-  //   console.log(this._userJourneys);
-  //   localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
-  // }
-
-  // unfollow(username: string, journeys: IJourney[]): void {
-  //   this._userJourneys = {
-  //     username: username,
-  //     journeys: journeys,
-  //     currentJourney: ''
-  //   }
-
-  //   console.log(this._userJourneys);
-  //   localStorage.setItem(`${username}Journeys`, JSON.stringify(this._userJourneys));
-  // }
+  finishTask(task: ITask, journey: IJourney){
+    task.isCurrentTask = false;
+    task.completed = true;
+    journey.completedTasks += 1;
+    journey.completionPercentage += 10;
+    this.subjectUserJourneys.next(this._userJourneys);
+    alert('You have finished the challenge!')
+  }
 }

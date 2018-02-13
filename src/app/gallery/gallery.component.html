@@ -1,17 +1,10 @@
-
 <!-- Banner -->
 <div class='container-fluid p-0 m-0'>
   <ngb-carousel>
-    <ng-template ngbSlide>
-      <img [src]="img1" class="img-responsive img-rest" alt="First slide">
-    </ng-template>
-
-    <ng-template ngbSlide>
-      <img [src]="img2" class="img-responsive img-rest" alt="Second slide">
-    </ng-template>
-    
-    <ng-template ngbSlide>
-        <img [src]="img3" class="img-responsive img-rest" alt="Third slide">
+    <div *ngFor="let img of _photos; let i = index">
+      <ng-template ngbSlide>
+        <img [src]="img" class="img-responsive img-rest" alt="i slide">
       </ng-template>
+    </div>
   </ngb-carousel>
 </div>

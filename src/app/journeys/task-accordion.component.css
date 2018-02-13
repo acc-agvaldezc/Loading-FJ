@@ -68,6 +68,8 @@ ngb-rating {
 
 .red { color: red; font-weight: bold; }
 .green { color: #3BE720; font-weight: bold; }
+.blue { color: lightskyblue; font-size: 25px; }
+.display { display: inline-block; }
 
 .arrow {
     padding-top: 50px;

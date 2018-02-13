@@ -52,13 +52,13 @@
 <div class='container-fluid accordion'>
   <section class="row py-5">
     <div class='col-md-10 offset-md-1 col-sm-12'>
-      <ngb-accordion *ngFor='let task of tasks; let i = index'>
-        <ngb-panel>
+      <ngb-accordion [closeOthers]="true">
+        <ngb-panel id="static-{{i+1}}" *ngFor='let task of tasks; let i = index'>
           <ng-template ngbPanelTitle>
-            <!-- <span class="oi oi-circle-check"> -->
+
             <div (click)='getDetail(task.taskData.id);'>
-              <div class="circle label">
-                <span>{{ i + 1 }}</span></div>
+              <div class="circle" *ngIf="task.completed == false"><span>{{ i + 1 }}</span></div>
+              <div class="display" *ngIf="task.completed == true"><span class="oi oi-circle-check blue"></span></div>
               <span> - {{ task.name }}</span>
             </div>
           </ng-template>

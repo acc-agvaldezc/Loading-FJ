@@ -65,3 +65,11 @@
 .green { color: #3BE720; font-weight: bold; }
 .arrow { color: #FF503A; }
 .breadcrumb { font-size: 25px; }
+
+.completed {
+    background-color: blue;
+}
+
+.started {
+    background-color: red;
+}

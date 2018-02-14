@@ -14,11 +14,15 @@ import { google } from '@agm/core/services/google-maps-types';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+  openMargin = '0px';
 
   constructor(private yelpService: YelpService){
   }
   
   ngOnInit(): void{
 
+  }
+  public changeNavStatus(status) {
+    this.openMargin = status === 'open' ? '250px' : '0px';
   }
 }

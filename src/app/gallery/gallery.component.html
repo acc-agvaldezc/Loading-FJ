@@ -1,0 +1,10 @@
+<!-- Banner -->
+<div class='container-fluid p-0 m-0'>
+  <ngb-carousel>
+    <div *ngFor="let img of _photos; let i = index">
+      <ng-template ngbSlide>
+        <img [src]="img" class="img-responsive img-rest" alt="i slide">
+      </ng-template>
+    </div>
+  </ngb-carousel>
+</div>

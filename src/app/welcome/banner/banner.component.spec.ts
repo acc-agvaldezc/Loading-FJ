@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { NO_ERRORS_SCHEMA } from '@angular/core/';
 import { BannerComponent } from './banner.component';
 
 describe('BannerComponent', () => {
@@ -7,11 +7,17 @@ describe('BannerComponent', () => {
   let fixture: ComponentFixture<BannerComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ BannerComponent ]
-    })
-    .compileComponents();
-  }));
+    const BannerComponentMock = {};
+  
+      TestBed.configureTestingModule({
+        declarations: [ BannerComponent ],
+        schemas: [ NO_ERRORS_SCHEMA],
+        providers: [
+          { provide: BannerComponent, useValue: BannerComponentMock },
+        ]
+      })
+      .compileComponents();
+    }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BannerComponent);
@@ -21,5 +27,10 @@ describe('BannerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  
+  it('should alert works', () => {
+    component.alertLogin 
+    expect(component.alertLogin).toBeTruthy;
   });
 });

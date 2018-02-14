@@ -4,8 +4,8 @@
 
 .navbar-orange .navbar-toggler,
 .navbar-orange  a {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
 .app-icon {
@@ -15,5 +15,66 @@
 }
 
 .userMenuSection a {
-  color: gray;
+    color: black;
+}
+
+.cursor { cursor: pointer; }
+.login { 
+  background-color: #FF503A;
+  border: 0px;
+}
+
+.user {
+  height: 35px;
+  width: 35px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    /* background-color:rgba(255, 80, 58, 0.90); */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.team {
+    margin-left: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.foto {
+    margin-left: 10px;
+    height: 120px;
+    width: 80%;
+}
+
+.menu {
+    cursor:pointer;
+    color: white;
+    font-size:18px;
+    margin-right: 5px;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+}
+
+#main {
+    transition: margin-left .5s;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav { padding-top: 15px; }
 }

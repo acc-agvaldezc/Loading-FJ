@@ -1,10 +1,13 @@
-<div class="container-fluid">
+<div class="loading" *ngIf="loading">
+    <p>Loading... <i class="fa fa-spinner fa-spin"></i></p>
+</div>
+<div class="container-fluid back" *ngIf="!loading">
   <header class="header header-style">
     Welcome! Choose a track to get started.
   </header>
   <br>
   <section>
-    <div class="container-fluid">
+    <div class="container-fluid" *ngIf="information">
       <div class="row">
         <div class="col-md-1"></div>
 
@@ -12,12 +15,12 @@
           <ngb-progressbar [value]='journey.completionPercentage'></ngb-progressbar>
           <div class="label-div">
             <div class="info-path">
-              <a class="route" [routerLink]="['/journeys', journey.id]">
+              <a class="route" [routerLink]="['/journeys', journey.name]">
                 <img class="food-icon" [src]='journey.imgUrl'>{{ journey.name }}
               </a>
             </div>
-            <span class="completion-path" *ngIf='journeyCurrent != null'>
-              {{ journey.completionPercentage / 100 | percent : '1.0' }}
+            <span class="completion-path">
+              {{ current != journey.name ? '' : (journey.completionPercentage / 100 | percent : '1.0') }}
             </span>
           </div>
           <section class="description"> {{ journey.description }} </section>

@@ -24,7 +24,7 @@ import { baseRoutes } from './router/routes';
   declarations: [
     AppComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

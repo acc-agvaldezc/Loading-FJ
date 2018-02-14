@@ -1,0 +1,134 @@
+<!-- Bigger Container -->
+<div class="loading" *ngIf="loading">
+  <p>Loading... <i class="fa fa-spinner fa-spin"></i></p>
+</div>
+
+<div class='card card-body bg' *ngIf='checked1 && checked2 && !loading'>
+  <a class="breadcrumb" [routerLink]="['/journeys', name]">
+    <span class="oi oi-arrow-left arrow"></span>
+    <span>Journeys / {{ name }}</span>
+  </a>
+
+  <div class="container bw">
+    <div class="row">
+      <div class="display">
+        <span *ngIf="currentTask.completed == true" class="oi oi-circle-check blue"></span>
+        <label class="title">{{ taskDetails.name }}</label>
+        <span class="little" *ngIf='currentTask.isCurrentTask == true && currentTask.completed == false'> STARTED</span>
+        <span class="little" *ngIf='currentTask.completed == true'> COMPLETED</span>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto py-1">
+        <app-gallery 
+          [_photos]='taskDetails.photos'>
+        </app-gallery>
+        <div class="data">
+          <p class="title">{{ taskDetails.name }}</p>
+          <p class="rating">
+            <ngb-rating [rate]='taskDetails.rating' max='5' readonly=true></ngb-rating>
+          </p>
+          <p class="rating">
+            <a href="{{ taskReview.reviews[0].url }}">{{ taskReview.total }} reviews</a>
+            <br>{{ taskDetails.price }}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6 ml-auto mr-auto py-1">
+        <app-google-maps 
+          [_lat]="taskDetails.coordinates.latitude" 
+          [_lng]="taskDetails.coordinates.longitude" 
+          [_businessName]="taskDetails.name">
+        </app-google-maps>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto py-1">
+        <p class="text title">Challenge Description</p>
+        <p class="text">
+          Lorem ipsum dolor amet kale chips ipsum put a bird on it you probably haven't heard of them, poutine plaid migas. Raw denim
+          3 wolf moon minim, deserunt four dollar toast brunch hoodie artisan godard veniam officia edison bulb organic.
+          Pop-up plaid ut, aliqua irure heirloom synth esse kitsch flannel nulla drinking vinegar. Consectetur kickstarter
+          iPhone ennui meggings cold-pressed. Velit ipsum fam pinterest poke wolf. Venmo dolore iceland yr.
+        </p>
+        <div>
+          <button class="btn notification">
+            Resend Notification
+          </button>
+        </div>
+      </div>
+
+      <div class="col-md-4 ml-auto mr-auto py-1">
+        <div class="bg ">
+          <div class="px-2 info">
+            <p class="hours">Today:</p>
+            <p class="text-md space info">
+              {{ taskDetails.hours[0].open[0].start | openHours }} - {{ taskDetails.hours[0].open[0].end | openHours }}
+            </p>
+
+            <p class="text-md space info" *ngIf='taskDetails.is_closed == false'>
+              <span class="green">Open now</span>
+            </p>
+
+            <p class="text-md space info" *ngIf='taskDetails.is_closed == true'>
+              <span class="red">Closed now</span>
+            </p>
+          </div>
+
+          <hr>
+          <div class="px-2 space">
+            <p class="text-md link info">
+              <span class="oi oi-phone"></span>
+              <a class="text-md link" href="tel:{{ taskDetails.phone }}">{{ taskDetails.display_phone }}</a>
+            </p>
+            <p class="text-md link space info">
+              <span class="oi oi-external-link"></span>
+              <a class="text-md link" href="{{ taskDetails.url }}"> {{ taskDetails.name }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='card card-body bg'>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <button class="button change" [routerLink]="['/journeys', name, previousTask.taskData.id]" *ngIf="previousTask" 
+            (click)='goToPrevious();'>
+            Previous
+          </button>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4 text-center">
+          <div class="button" *ngIf='currentTask.isCurrentTask == false && currentTask.completed == false' 
+            (click)="toggleTask()">
+            Mark As Started
+          </div>
+          <div class="button complete" *ngIf='currentTask.isCurrentTask == true && currentTask.completed == false' 
+            (click)="toggleTask()">
+            Mark As Completed
+          </div>
+          <div class="button finish" *ngIf='currentTask.isCurrentTask == false && currentTask.completed == true'>
+              <span *ngIf="currentTask.completed == true" class="oi oi-circle-check blue"></span>
+              Way to go! Take the next challenge
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-3 text-center">
+          <button class="button complete" [routerLink]="['/journeys', name, nextTask.taskData.id]" *ngIf="currentTask.completed && nextTask" 
+            (click)='goToNext();'>
+            Next Task
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

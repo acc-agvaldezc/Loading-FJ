@@ -4,6 +4,8 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown';
 import { IUser } from '../../interfaces/user';
 import { AuthService, TOKEN_NAME } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { EventEmitter } from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-navbar',
@@ -29,8 +31,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   createLoginForm(): void {
     this.loginForm = this._formBuilder.group({
@@ -47,6 +48,7 @@ export class NavbarComponent implements OnInit {
 
     this.loggedIn = this._authService.login(username, password);
     
+    
     if (this.loggedIn) {
       this.user = this._authService.getUser();
       this._router.navigateByUrl('/journeys');
@@ -59,5 +61,17 @@ export class NavbarComponent implements OnInit {
     this._authService.logout();
     this.loggedIn = false;
     this.user = null;
+    this._router.navigateByUrl('/');
   }
+
+  openNav() {
+    document.getElementById("mySidenav").style.width = "220px";
+    document.getElementById("main").style.marginLeft = "220px";
+  }
+ 
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+  } 
 }
+

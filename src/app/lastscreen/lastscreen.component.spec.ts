@@ -1,26 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core/';
-import { JourneysComponent } from './journeys.component';
+import { LastscreenComponent } from './lastscreen.component';
 
-describe('JourneysComponent', () => {
-  let component: JourneysComponent;
-  let fixture: ComponentFixture<JourneysComponent>;
+describe('LastscreenComponent', () => {
+  let component: LastscreenComponent;
+  let fixture: ComponentFixture<LastscreenComponent>;
 
   beforeEach(async(() => {
-    const JourneysComponentMock={};
+    const LastscreenComponentMock={};
 
     TestBed.configureTestingModule({
-      declarations: [ JourneysComponent ],
+      declarations: [ LastscreenComponent ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
-        {provide:JourneysComponent, useValue: JourneysComponentMock},
+        {provide:LastscreenComponent, useValue: LastscreenComponentMock},
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JourneysComponent);
+    fixture = TestBed.createComponent(LastscreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

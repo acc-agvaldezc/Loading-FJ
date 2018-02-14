@@ -4,6 +4,8 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown';
 import { IUser } from '../../interfaces/user';
 import { AuthService, TOKEN_NAME } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { EventEmitter } from 'selenium-webdriver';
+
 
 @Component({
   selector: 'app-navbar',
@@ -62,4 +64,20 @@ export class NavbarComponent implements OnInit {
     this.user = null;
     this._router.navigateByUrl('/');
   }
+
+   openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  // enviar al emiter status open
+  // actualizar cuanto medira el nabar : 250px
 }
+ 
+closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  // enviar al emiter status closed
+  // actualizar cuanto medira el nabar : 0px
+ } 
+
+}
+

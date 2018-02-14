@@ -120,7 +120,8 @@ export class JourneysService {
   
   updateCurrentTask(task: ITask): void{
     task.isCurrentTask = true;   
-    this.subjectUserJourneys.next(this._userJourneys)
+    this.subjectUserJourneys.next(this._userJourneys);
+    alert('Welcome to this challenge!')
   }
 
   finishTask(task: ITask, journey: IJourney){
@@ -129,6 +130,6 @@ export class JourneysService {
     journey.completedTasks += 1;
     journey.completionPercentage += 10;
     this.subjectUserJourneys.next(this._userJourneys);
-    alert('You have finished the challenge!')
+    alert('Congratulations, you have finished this challenge!')
   }
 }

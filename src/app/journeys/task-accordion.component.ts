@@ -24,6 +24,7 @@ export class TaskAccordionComponent implements OnInit{
   current: string;
   checked1: boolean = false;
   checked2: boolean = false;
+  loading: boolean = true;
 
   constructor(private _route: ActivatedRoute, private _router: Router,
     private _pathService: JourneysService, private _yelpService: YelpService) { }
@@ -45,6 +46,12 @@ export class TaskAccordionComponent implements OnInit{
   }
 
   getDetail(id: string) {
+    if(this.loading == false) {
+      this.loading = true;
+      this.taskDetails = null;
+      this.taskReview = null;
+    }
+    
     this._yelpService.getBusinessDetail(id).subscribe((detail: IYelpBusinessDetailResponse) => {
       this.taskDetails = detail;
       this.checked1 = true;
@@ -53,6 +60,7 @@ export class TaskAccordionComponent implements OnInit{
     this._yelpService.getBusinessDetailReviews(id).subscribe((review: IYelpReview) => {
       this.taskReview = review;
       this.checked2 = true;
+      this.loading = false;
     });
   }
 }

@@ -18,18 +18,22 @@ export class JourneysComponent implements OnInit{
   journeys: IJourney[];
   current: string;
   information: boolean = false;
+  loading: boolean = true;
+  
   constructor(private _journeyService: JourneysService, private _config: NgbProgressbarConfig, private _changedetector: ChangeDetectorRef) { 
     _config.max = 100;
     _config.height = '125px';
     _config.type = 'danger';
 
   }
+
   ngOnInit() {
     this._journeyService.getUserJourneys().subscribe((userJourneys: IUserJourneys) => {
       this.userJourneys = userJourneys;
       this.journeys = userJourneys.journeys;
       this.current = userJourneys.currentJourney
       this.information = true;
+      this.loading = false;
     })
   }
 }

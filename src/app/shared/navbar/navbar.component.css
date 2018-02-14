@@ -4,8 +4,8 @@
 
 .navbar-orange .navbar-toggler,
 .navbar-orange  a {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
 }
 
 .app-icon {
@@ -15,7 +15,7 @@
 }
 
 .userMenuSection a {
-  color: gray;
+    color: black;
 }
 
 .cursor { cursor: pointer; }
@@ -29,14 +29,6 @@
   width: 35px;
 }
 
-
-/* Aqui iria todo para darle estilo al navbar-sidebar */
-header {
-    font-family: "Lato", sans-serif;
-    transition: background-color .5s;
-}
-
-
 .sidenav {
     height: 100%;
     width: 0;
@@ -44,44 +36,45 @@ header {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #f2f2f2;
+    background-color: rgba(0, 0, 0, 0.75);
+    /* background-color:rgba(255, 80, 58, 0.90); */
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-    
+.team {
+    margin-left: 10px;
+    color: white;
+    font-size: 15px;
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
-    
+.foto {
+    margin-left: 10px;
+    height: 120px;
+    width: 80%;
 }
 
-.sidenav .closebtn {
+.menu {
+    cursor:pointer;
+    color: white;
+    font-size:18px;
+    margin-right: 5px;
+}
+
+.closeBtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    color: white;
 }
 
 #main {
     transition: margin-left .5s;
-    padding: 16px;
-    
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav { padding-top: 15px; }
 }
-
-    

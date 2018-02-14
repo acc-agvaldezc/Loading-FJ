@@ -1,4 +1,7 @@
-<div class="container-fluid back">
+<div class="loading" *ngIf="loading">
+    <p>Loading... <i class="fa fa-spinner fa-spin"></i></p>
+</div>
+<div class="container-fluid back" *ngIf="!loading">
   <header class="header header-style">
     Welcome! Choose a track to get started.
   </header>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IYelpBusinessDetailResponse } from '../interfaces/yelp';
+import { IYelpBusinessDetailResponse, IYelpReview } from '../interfaces/yelp';
 import { YelpService } from '../services/yelp.service';
 import { JourneysService } from '../services/journeys.service';
 import { IJourney } from '../interfaces/journeys';
@@ -17,11 +17,14 @@ export class LastscreenComponent implements OnInit {
   currentTask: ITask;
   journey: IJourney;
   taskDetails: IYelpBusinessDetailResponse;
+  taskReview: IYelpReview;
   previousTask?: ITask;
   nextTask?: ITask;
   checked1: boolean = false;
+  checked2: boolean = false;
   name: string;
   idTask: string;
+  loading: boolean = true;
 
   constructor(private _route: ActivatedRoute, private _router: Router,
      private _yelpService: YelpService, private _journeyService: JourneysService) { }
@@ -39,22 +42,27 @@ export class LastscreenComponent implements OnInit {
       this.nextTask = this.journey.tasks[this.journey.tasks.indexOf(this.currentTask) + 1]
       this.previousTask = this.journey.tasks[this.journey.tasks.indexOf(this.currentTask) - 1]
       
-      if(this.previousTask === undefined) {
-        this.previousTask = null;
-      }
-
-      if(this.nextTask === undefined) {
-        this.nextTask = null;
-      }
+      if(this.previousTask === undefined) { this.previousTask = null; }
+      if(this.nextTask === undefined) { this.nextTask = null; }
     });
-    
-    
   }
 
   getDetail(id: string) {
+    if(this.loading == false) {
+      this.loading = true;
+      this.taskDetails = null;
+      this.taskReview = null;
+    }
+    
     this._yelpService.getBusinessDetail(id).subscribe((detail: IYelpBusinessDetailResponse) => {
       this.taskDetails = detail;
       this.checked1 = true;
+    });
+
+    this._yelpService.getBusinessDetailReviews(id).subscribe((review: IYelpReview) => {
+      this.taskReview = review;
+      this.checked2 = true;
+      this.loading = false;
     });
   }
 

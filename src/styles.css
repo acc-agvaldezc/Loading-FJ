@@ -40,3 +40,11 @@ a:-webkit-any-link {
   cursor: pointer;
   text-decoration: none;
 }
+
+.loading {
+  margin-top: 15px;
+  text-align: center;
+  font-style: italic;
+  font-size: 22px;
+  color: #FF503E;
+}

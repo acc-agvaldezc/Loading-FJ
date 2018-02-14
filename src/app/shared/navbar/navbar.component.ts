@@ -31,8 +31,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   createLoginForm(): void {
     this.loginForm = this._formBuilder.group({
@@ -65,19 +64,14 @@ export class NavbarComponent implements OnInit {
     this._router.navigateByUrl('/');
   }
 
-   openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-  document.getElementById("main").style.marginLeft = "250px";
-  // enviar al emiter status open
-  // actualizar cuanto medira el nabar : 250px
-}
+  openNav() {
+    document.getElementById("mySidenav").style.width = "220px";
+    document.getElementById("main").style.marginLeft = "220px";
+  }
  
-closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
-  // enviar al emiter status closed
-  // actualizar cuanto medira el nabar : 0px
- } 
-
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+  } 
 }
 

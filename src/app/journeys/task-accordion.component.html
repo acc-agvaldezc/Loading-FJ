@@ -1,41 +1,39 @@
 <div class="container">
-  <section class="routes">
-    <div class="row">
-      <div class="col-md-8 buttons">
-        <a *ngFor='let journey of journeys'>
-          <button class="btn btn-default routeButton" 
-            [routerLink]="['/journeys', journey.name]" 
-            [routerLinkActive]='["active"]'>{{ journey.name }}
-          </button>
-        </a>
-      </div>
-      
-      <div class="dropdown">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn routeButton" id="dropPath" ngbDropdownToggle>Select Track</button>
-          <div ngbDropdownMenu aria-labelledby="dropPath">
-            <a *ngFor='let journey of journeys'>
-              <button class="dropdown-item" 
-                [routerLink]="['/journeys', journey.name]" 
-                [routerLinkActive]='["active-list"]'>{{ journey.name }}
-              </button>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-2">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn routeButton" id="dropMenu" ngbDropdownToggle>Order By</button>
-          <div ngbDropdownMenu aria-labelledby="dropMenu">
-            <button class="dropdown-item active-list">Most Recent</button>
-            <button class="dropdown-item">Highest Rated</button>
-            <button class="dropdown-item">Top Reviewed</button>
-          </div>
+  <div class="row routes">
+    <div class="col-md-9 buttons py-1">
+      <a *ngFor='let journey of journeys'>
+        <button class="btn btn-default routeButton" 
+          [routerLink]="['/journeys', journey.name]" 
+          [routerLinkActive]='["active"]'>{{ journey.name }}
+        </button>
+      </a>
+    </div>
+    
+    <div class="col-sm-12 col-xs-12 dropdown">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn routeButton" id="dropPath" ngbDropdownToggle>Select Track</button>
+        <div ngbDropdownMenu aria-labelledby="dropPath">
+          <a *ngFor='let journey of journeys'>
+            <button class="dropdown-item" 
+              [routerLink]="['/journeys', journey.name]" 
+              [routerLinkActive]='["active-list"]'>{{ journey.name }}
+            </button>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+
+    <div class="col-md-2 col-sm-12 col-xs-12 py-1">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn routeButton" id="dropMenu" ngbDropdownToggle>Order By</button>
+        <div ngbDropdownMenu aria-labelledby="dropMenu">
+          <button class="dropdown-item active-list">Most Recent</button>
+          <button class="dropdown-item">Highest Rated</button>
+          <button class="dropdown-item">Top Reviewed</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="graph">
     <app-grafico 
@@ -55,7 +53,6 @@
       <ngb-accordion [closeOthers]="true">
         <ngb-panel id="static-{{i+1}}" *ngFor='let task of tasks; let i = index'>
           <ng-template ngbPanelTitle>
-
             <div (click)='getDetail(task.taskData.id);'>
               <div class="circle" *ngIf="task.completed == false"><span>{{ i + 1 }}</span></div>
               <div class="display" *ngIf="task.completed == true"><span class="oi oi-circle-check blue"></span></div>
@@ -63,9 +60,12 @@
             </div>
           </ng-template>
           <ng-template ngbPanelContent>
-            <div class="container" *ngIf='checked1 && checked2'>
+            <div class="loading" *ngIf="loading">
+                <p>Loading... <i class="fa fa-spinner fa-spin"></i></p>
+            </div>
+            <div class="container" *ngIf='checked1 && checked2 && !loading'>
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 py-1">
                   <div class="ml-auto mr-auto">
                     <p class="title">{{ taskDetails.name }}</p>
                     <p class="rating">
@@ -79,7 +79,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-2 info">
+                <div class="col-md-2 info py-1">
                   <div class="ml-auto mr-auto">
                     <div>
                       <p class="title">Today:</p>
@@ -109,13 +109,13 @@
                   </div>
                 </div>
 
-                <div class="col-md-3 gallery">
+                <div class="col-md-3 gallery py-1">
                   <app-gallery
                     [_photos]='taskDetails.photos'>
                   </app-gallery>
                 </div>
               
-                <div class="col-md-3 map">
+                <div class="col-md-3 map py-1">
                   <app-google-maps 
                     [_lat]="taskDetails.coordinates.latitude" 
                     [_lng]="taskDetails.coordinates.longitude" 
@@ -123,8 +123,8 @@
                   </app-google-maps>
                 </div>
 
-                <div class="col-md-1 next">
-                  <a class="link" [routerLink]="['/journeys', selectedJourney.name, taskDetails.id]">
+                <div class="col-md-1 next py-1">
+                  <a [routerLink]="['/journeys', selectedJourney.name, taskDetails.id]">
                     <span class="oi oi-chevron-right"></span>
                   </a>                    
                 </div>

@@ -3,6 +3,7 @@
     margin-bottom: 5px;
 }
 
+.list { float: right; }
 .graph {
     margin-top: 20px;
     margin-bottom: 5px;
@@ -34,7 +35,7 @@ ngb-rating {
 
 .rating { margin-top: -15px; }
 .text-small { font-size: 13px; }
-.text-medium { font-size: 15px; }
+.text-medium { font-size: 14px; }
 .category { margin-top: -13px; }
 .link { color: #3399FF }
 
@@ -57,7 +58,7 @@ ngb-rating {
     color: white;
 }
 
-@media (max-width: 540px) {
+@media (max-width: 770px) {
     .buttons, .map, .gallery { display: none; }
     .dropdown { display: block; }
 }
@@ -68,7 +69,7 @@ ngb-rating {
 
 .red { color: red; font-weight: bold; }
 .green { color: #3BE720; font-weight: bold; }
-.blue { color: lightskyblue; font-size: 25px; }
+.blue { color: #3399FF; font-size: 25px; }
 .display { display: inline-block; }
 
 .arrow {

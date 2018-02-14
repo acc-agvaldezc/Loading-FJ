@@ -1,37 +1,39 @@
 <header>
   <div id="main">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
-    <div id="mySidenav" class="sidenav" [ngStyle]="{width: openMargin}">
-      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <a href="#">About</a>
+    <div id="mySidenav" class="sidenav" [ngStyle]="{ width: openMargin }">
+      <a href="javascript:void(0)" class="closeBtn" (click)="closeNav()">&times;</a>
+      <div class="team">
+        Team Loading...
+        <br><br>
+        <ul>
+          <li>Adrián Montemayor</li>
+          <li>Fernando Gutiérrez</li>
+          <li>Rocío Valenzuela</li>
+          <li>Nestora Martínez</li>
+          <li>Alan Valdez</li>
+        </ul>
+        <img class='foto' src='assets/images/team.PNG'>
+      </div>
     </div>
-
-    <!-- No moverc
-
-     No mover-->
      
     <nav class="navbar d-flex navbar-orange">
-
-        <span style="font-size:20px;cursor:pointer" (click)="openNav()">&#9776;</span>
-
-      <a class="navbar-brand mr-auto" href="#">{{navbarBrandTitle}}
-
-         
+      <span class="menu" (click)="openNav()">&#9776;</span>
+      <a class="navbar-brand mr-auto" [routerLink]="['/']">{{ navbarBrandTitle }}
         <!--img class="app-icon" src='assets/Icons/icon-white.png'-->
       </a>
-      <!-- Aqui VA EL IXONO DE X -->
-      <!-- AQUI TERMINA EL INCONO -->
+
       <ul class="nav navbar-nav pr-5">
         <li class='nav-item text-center pr-5 pl-5' *ngIf='!loggedIn'>
-          <a href='#' class='nav-link' [ngbPopover]='loginFormPopover' popoverTitle='Login' placement='bottom'>Login
-            <span class="oi oi-caret-bottom"></span>
+          <a class='nav-link cursor' [ngbPopover]='loginFormPopover' popoverTitle='Login' placement='bottom'>Login
+            <span class="oi oi-chevron-bottom"></span>
           </a>
-          <!--Login form popover-->
+
+          <!--LoginForm Popover-->
           <ng-template #loginFormPopover id='loginFormPopoverTemplate'>
             <div class='row'>
               <form [formGroup]='loginForm' class='col-md-12' (ngSubmit)='login()'>
                 <div class='alert alert-danger' *ngIf='errorMessage'>
-                  <p>{{errorMessage}}</p>
+                  <p>{{ errorMessage }}</p>
                 </div>
                 <div class='form-group'>
                   <input class='form-control' placeholder='Username' type='text' formControlName='username'>
@@ -40,69 +42,57 @@
                   <input class='form-control' placeholder='Password' type='password' formControlName='password'>
                 </div>
                 <div class='form-group'>
-                  <button class='form-control' class='btn btn-primary btn-block' type='submit'>Login</button>
+                  <button class='form-control' class='btn btn-primary btn-block login' type='submit'>Login</button>
                 </div>
                 <div class='row'>
                   <div class='col-md-12'>
-                    <p class='text-center'>
-                      <strong>Or</strong>
-                    </p>
+                    <p class='text-center'><strong>Or</strong></p>
                     <hr>
                   </div>
                 </div>
                 <div class='row'>
                   <div class='col'>
-                    <a href='#'>
-                      <img src='../../assets/images/facebook-50.png'>
-                    </a>
+                    <a class="cursor"><img src='../../assets/images/facebook-50.png'></a>
                   </div>
                   <div class='col'>
-                    <a href='#'>
-                      <img src='../../assets/images/google-50.png'>
-                    </a>
+                    <a class="cursor"><img src='../../assets/images/google-50.png'></a>
                   </div>
                   <div class='col'>
-                    <a href='#'>
-                      <img src='../../assets/images/twitter-50.png'>
-                    </a>
+                    <a class="cursor"><img src='../../assets/images/twitter-50.png'></a>
                   </div>
                 </div>
               </form>
             </div>
           </ng-template>
-          <!--Login form popover-->
-          
+          <!--LoginForm Popover-->
+        
         </li>
         <li *ngIf='loggedIn'>
-          <a href='#' class='nav-link' [ngbPopover]='userMenu' popoverTitle='' placement='bottom'>Hi, {{user.firstName}}
-            <span class="oi oi-caret-bottom"></span>
+          <a class='nav-link cursor' [ngbPopover]='userMenu' popoverTitle='' placement='bottom'>
+            Hi, {{user.firstName}} <img class='user' src='assets/images/jd.png'><span class="oi oi-chevron-bottom"></span>
           </a>
           <ng-template #userMenu>
-            <div class='row' class='userMenuSection'>
-              <a href='#'>
+            <div class='row userMenuSection'>
+              <a class='cursor' [routerLink]="['/journeys']">
                 <div class="col-md-12 text-center">
                   <strong>My Journey</strong>
                 </div>
               </a>
             </div>
             <hr>
-            <div class='row' class='userMenuSection'>
-              <a href='#' (click)='logout()'>
+            <div class='row userMenuSection'>
+              <a class='cursor'(click)='logout()'>
                 <div class="col-md-12 text-center">
                   <strong>Logout</strong>
                 </div>
               </a>
             </div>
           </ng-template>
-        </li>
-        <!--  menu-->
-        
+        </li>        
       </ul>
       
     </nav>
-        <router-outlet></router-outlet>
-  
-        
+
+    <router-outlet></router-outlet> 
   </div>
-  
 </header>
